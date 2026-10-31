@@ -14,7 +14,19 @@ export default function handleResize(
   const height = canvas3d.height;
   renderer.setSize(width, height);
   camera.aspect = width / height;
+
+  const isMobileHero = window.innerWidth <= 1024;
+  if (isMobileHero) {
+    camera.fov = 18;
+    camera.position.set(0, 14.2, 20.5);
+    camera.zoom = 1.55;
+  } else {
+    camera.fov = 14.8;
+    camera.position.set(-0.35, 13.0, 24.5);
+    camera.zoom = 1.08;
+  }
   camera.updateProjectionMatrix();
+
   const workTrigger = ScrollTrigger.getById("work");
   ScrollTrigger.getAll().forEach((trigger) => {
     if (trigger != workTrigger) {

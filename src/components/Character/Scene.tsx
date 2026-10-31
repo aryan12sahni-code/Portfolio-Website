@@ -38,12 +38,23 @@ const Scene = () => {
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
 
-      // Framed so the avatar sits a bit right of center, leaving room
-      // for the name on the left without getting clipped.
-      const camera = new THREE.PerspectiveCamera(14.8, aspect, 0.1, 1000);
+      // Desktop: frame full body with space for name left / title right.
+      // Mobile: tighter crop around the upper body so the canvas isn't empty.
+      const isMobileHero = window.innerWidth <= 1024;
+      const camera = new THREE.PerspectiveCamera(
+        isMobileHero ? 18 : 14.8,
+        aspect,
+        0.1,
+        1000
+      );
       camera.position.z = 10;
-      camera.position.set(-0.35, 13.0, 24.5);
-      camera.zoom = 1.08;
+      if (isMobileHero) {
+        camera.position.set(0, 14.2, 20.5);
+        camera.zoom = 1.55;
+      } else {
+        camera.position.set(-0.35, 13.0, 24.5);
+        camera.zoom = 1.08;
+      }
       camera.updateProjectionMatrix();
 
       let headBone: THREE.Object3D | null = null;
