@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
+import { customizeCharacterAppearance } from "./appearance";
 import { decryptFile } from "./decrypt";
 
 const setCharacter = (
@@ -41,10 +42,11 @@ const setCharacter = (
                 child.receiveShadow = false;
                 mesh.frustumCulled = true;
                 if (mesh.material && !Array.isArray(mesh.material)) {
-                  (mesh.material as THREE.ShaderMaterial).precision = 'mediump';
+                  (mesh.material as THREE.ShaderMaterial).precision = "mediump";
                 }
               }
             });
+            customizeCharacterAppearance(character);
             resolve(gltf);
             setCharTimeline(character, camera);
             setAllTimeline();
