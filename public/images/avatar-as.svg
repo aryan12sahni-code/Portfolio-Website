@@ -1,45 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none">
   <defs>
     <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#d4a06e"/>
-      <stop offset="1" stop-color="#b8794a"/>
+      <stop stop-color="#d4a574"/>
+      <stop offset="1" stop-color="#c9956a"/>
     </linearGradient>
     <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#0d3330"/>
-      <stop offset="1" stop-color="#134e4a"/>
+      <stop stop-color="#123f3c"/>
+      <stop offset="1" stop-color="#1a5c56"/>
     </linearGradient>
     <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
       <stop stop-color="#1a1410"/>
       <stop offset="1" stop-color="#0c0a08"/>
     </linearGradient>
     <radialGradient id="glow" cx="50%" cy="70%" r="50%">
-      <stop stop-color="#2dd4bf" stop-opacity="0.4"/>
+      <stop stop-color="#2dd4bf" stop-opacity="0.35"/>
       <stop offset="1" stop-color="#04090c" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <circle cx="300" cy="620" r="220" fill="url(#glow)"/>
   <path d="M110 760 C130 520, 470 520, 490 760 Z" fill="url(#shirt)"/>
-  <rect x="255" y="400" width="90" height="70" rx="18" fill="url(#skin)"/>
-  <ellipse cx="300" cy="280" rx="118" ry="132" fill="url(#skin)"/>
-  <!-- short crop hair -->
-  <path d="M178 250 C185 145, 415 145, 422 250 C405 180, 200 180, 178 250 Z" fill="url(#hair)"/>
-  <path d="M190 210 C220 170, 380 165, 410 215 C390 195, 210 195, 190 210 Z" fill="url(#hair)"/>
-  <rect x="210" y="195" width="200" height="55" rx="18" fill="url(#hair)" transform="rotate(-6 300 220)"/>
-  <!-- glasses -->
-  <circle cx="255" cy="285" r="32" fill="none" stroke="#111827" stroke-width="6"/>
-  <circle cx="345" cy="285" r="32" fill="none" stroke="#111827" stroke-width="6"/>
-  <path d="M287 285 H313" stroke="#111827" stroke-width="5"/>
-  <circle cx="255" cy="285" r="26" fill="#2dd4bf" fill-opacity="0.18"/>
-  <circle cx="345" cy="285" r="26" fill="#2dd4bf" fill-opacity="0.18"/>
-  <!-- eyes -->
-  <ellipse cx="255" cy="285" rx="10" ry="8" fill="#fff8f0"/>
-  <ellipse cx="345" cy="285" rx="10" ry="8" fill="#fff8f0"/>
-  <circle cx="256" cy="286" r="5" fill="#3b2212"/>
-  <circle cx="346" cy="286" r="5" fill="#3b2212"/>
-  <!-- brows -->
-  <path d="M228 252 Q255 242 278 250" stroke="#140e0a" stroke-width="7" stroke-linecap="round" fill="none"/>
-  <path d="M322 250 Q345 242 372 252" stroke="#140e0a" stroke-width="7" stroke-linecap="round" fill="none"/>
-  <!-- nose / mouth -->
-  <path d="M300 295 L294 330 Q300 338 306 330 Z" fill="#a86b3d" opacity="0.75"/>
-  <path d="M272 358 Q300 375 328 358" stroke="#8b4518" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <rect x="255" y="395" width="90" height="75" rx="20" fill="url(#skin)"/>
+  <ellipse cx="300" cy="275" rx="115" ry="135" fill="url(#skin)"/>
+  <path d="M182 245 C188 138, 412 138, 418 245 C400 175, 205 175, 182 245 Z" fill="url(#hair)"/>
+  <path d="M175 255 C170 205, 210 168, 250 162 L242 245 Z" fill="url(#hair)"/>
+  <path d="M425 255 C430 205, 390 168, 350 162 L358 245 Z" fill="url(#hair)"/>
+  <path d="M230 248 Q255 236 280 246" stroke="#1a120c" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <path d="M320 246 Q345 236 370 248" stroke="#1a120c" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <ellipse cx="255" cy="280" rx="15" ry="11" fill="#fff8f0"/>
+  <ellipse cx="345" cy="280" rx="15" ry="11" fill="#fff8f0"/>
+  <circle cx="257" cy="282" r="6.5" fill="#3b2212"/>
+  <circle cx="347" cy="282" r="6.5" fill="#3b2212"/>
+  <circle cx="259" cy="280" r="2" fill="#fff"/>
+  <circle cx="349" cy="280" r="2" fill="#fff"/>
+  <path d="M300 288 L293 328 Q300 336 307 328 Z" fill="#a86b3d" opacity="0.7"/>
+  <path d="M270 355 Q300 372 330 355" stroke="#8b4518" stroke-width="5" stroke-linecap="round" fill="none"/>
 </svg>

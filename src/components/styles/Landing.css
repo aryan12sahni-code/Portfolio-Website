@@ -490,14 +490,14 @@ h2.landing-info-h2 {
     display: none;
   }
 
-  /* Name LEFT of character, title RIGHT — keep clear of the 3D model */
+  /* Name LEFT of character, title RIGHT — inset so text isn't clipped */
   .landing-intro {
     top: 42%;
-    left: 0;
+    left: 2%;
     right: auto;
     transform: translateY(-50%);
     width: max-content;
-    max-width: 34vw;
+    max-width: 30vw;
     z-index: 30;
   }
 
@@ -507,23 +507,31 @@ h2.landing-info-h2 {
     z-index: 30;
     text-align: left;
     transform: translateY(-50%);
-    right: 0;
+    right: 2%;
     left: auto;
-    max-width: min(340px, 28vw);
+    max-width: min(320px, 26vw);
+  }
+
+  h2.landing-info-h2 {
+    font-size: 32px;
+  }
+
+  .landing-h2-1 {
+    white-space: normal;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .landing-intro {
     top: 42%;
-    left: 0;
+    left: 3%;
     right: auto;
     transform: translateY(-50%);
-    max-width: 32vw;
+    max-width: 28vw;
   }
 
   .landing-brand {
-    font-size: 52px;
+    font-size: 48px;
   }
 
   .landing-info {
@@ -532,19 +540,19 @@ h2.landing-info-h2 {
     z-index: 30;
     text-align: left;
     transform: translateY(-50%);
-    right: 0;
+    right: 3%;
     left: auto;
-    max-width: min(360px, 26vw);
+    max-width: min(340px, 24vw);
   }
 
   h2.landing-info-h2 {
-    font-size: 40px;
+    font-size: 36px;
   }
 }
 
 @media screen and (min-width: 1600px) {
   .landing-brand {
-    font-size: 58px;
+    font-size: 54px;
   }
 
   .landing-info h3 {
@@ -552,11 +560,11 @@ h2.landing-info-h2 {
   }
 
   .landing-info h2 {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.35;
   }
 
   h2.landing-info-h2 {
-    font-size: 44px;
+    font-size: 40px;
   }
 }
