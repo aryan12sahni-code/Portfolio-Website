@@ -1,31 +1,24 @@
 # Aryan Sahni — Portfolio
 
-Personal portfolio for **Aryan Sahni**: product operations, analytics, and industrial AI. Dark, motion-heavy single-page Next.js site — boot marquee loader, cursor orb, GSAP/Framer scroll reveals, glowing timeline, magnetic CTAs, skills marquee, and a floating resume download.
+Interactive 3D developer portfolio adapted from the open-source [red1-for-hek/portfolio-website](https://github.com/red1-for-hek/portfolio-website) template (MIT), personalized for **Aryan Sahni**.
 
-## Stack
+## Features
 
-- Next.js (App Router) + TypeScript
-- Tailwind CSS + shadcn/ui
-- Framer Motion + GSAP ScrollTrigger
+- Three.js / WebGL character scene with mouse interaction
+- GSAP + Lenis smooth scroll
+- Boot loader with marquee + percentage
+- Custom cursor, social sidebar, floating resume
+- Career timeline, horizontal work gallery, `/myworks` page
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev -- --port 43123
+npm run dev
 ```
 
 Open [http://127.0.0.1:43123](http://127.0.0.1:43123).
 
-## Scripts
-
-| Command        | Description              |
-| -------------- | ------------------------ |
-| `npm run dev`  | Start development server |
-| `npm run build`| Production build         |
-| `npm run start`| Serve production build   |
-| `npm run lint` | Run ESLint               |
-
 ## Content
 
-Copy and experience data live in `src/data/content.ts`. Update that file to refresh the site without touching layout components.
+Edit `src/config.ts` for copy, experience, projects, and contact details.
