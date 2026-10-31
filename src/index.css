@@ -17,7 +17,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
 
-  /* Signal Lab — teal/amber on deep ink, not the reference purple */
+  /* Teal/amber on deep ink — distinct from the reference purple */
   --accentColor: #2dd4bf;
   --accentSecondary: #f59e0b;
   --backgroundColor: #04090c;

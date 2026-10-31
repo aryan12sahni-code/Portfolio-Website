@@ -1,14 +1,14 @@
 # Aryan Sahni — Portfolio
 
-**Signal Lab** portfolio for **Aryan Sahni** — product operations & industrial AI.
+Portfolio for **Aryan Sahni** — product operations & industrial AI.
 
-Built with React, Three.js, and GSAP. Visual identity is intentionally distinct (teal/amber on deep navy, Syne + DM Sans, custom avatar materials and copy).
+Built with React, Three.js, and GSAP. Visual identity uses teal/amber accents on a deep navy background (Syne + DM Sans), with custom avatar materials and copy.
 
 ## Features
 
 - Mouse-driven 3D character with custom face/hair materials
 - GSAP + Lenis smooth scroll
-- Dark Signal Lab theme (teal/amber accents)
+- Dark theme with teal/amber accents
 - Project gallery with full descriptions, `/myworks` page
 - Resume download + contact CTAs
 
