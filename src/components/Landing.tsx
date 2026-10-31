@@ -10,6 +10,10 @@ const Landing = ({ children }: PropsWithChildren) => {
   return (
     <>
       <div className="landing-section" id="landingDiv">
+        {/*
+          Keep the 3D character outside .landing-container so desktop
+          GSAP opacity/transform on the container does not hide or break it.
+        */}
         <div className="landing-container">
           <div className="landing-intro">
             <h2>Hey there —</h2>
@@ -34,8 +38,8 @@ const Landing = ({ children }: PropsWithChildren) => {
               </div>
             </h2>
           </div>
-          {children}
         </div>
+        {children}
       </div>
     </>
   );

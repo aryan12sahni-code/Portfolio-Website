@@ -39,8 +39,8 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
     const mountCharacter = () => setShouldRenderCharacter(true);
 
-    // Mount sooner on smaller screens so the 3D face appears with the hero.
-    const delay = window.innerWidth <= 1024 ? 200 : 1200;
+    // Mount quickly so loader + desktop interactions are not delayed.
+    const delay = window.innerWidth <= 1024 ? 200 : 400;
 
     if (typeof win.requestIdleCallback === "function") {
       idleId = win.requestIdleCallback(mountCharacter, { timeout: delay });

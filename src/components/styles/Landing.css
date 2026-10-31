@@ -3,8 +3,7 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .landing-section,
-  .landing-container {
+  .landing-section {
     height: auto !important;
     min-height: 0 !important;
     max-width: 100%;
@@ -12,16 +11,20 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 72px 0 12px;
   }
 
+  /* Let intro / info / character share one flex stack for ordering */
   .landing-container {
+    height: auto !important;
+    min-height: 0 !important;
     width: var(--cWidth) !important;
+    max-width: 100%;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: contents;
     overflow: visible !important;
+    padding: 0;
   }
 
   .landing-intro {
@@ -354,6 +357,7 @@
   z-index: 3;
   transform: translate(-50%, -50%);
   border-radius: 50%;
+  pointer-events: auto;
 }
 
 .landing-intro {
@@ -533,16 +537,28 @@ h2.landing-info-h2 {
 }
 
 @media screen and (min-width: 1025px) {
+  .character-container {
+    display: contents;
+  }
+
   .character-model {
     height: 100vh;
     bottom: 0;
     z-index: 20;
     position: fixed;
     pointer-events: none;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1920px;
   }
 
   .character-model canvas {
     z-index: 21;
+  }
+
+  .character-hover {
+    pointer-events: auto;
   }
 
   .character-model::after,
