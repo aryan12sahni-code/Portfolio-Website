@@ -32,19 +32,32 @@
     transform: none !important;
     margin: 0 0 8px;
     z-index: 10;
-    text-align: center;
+    text-align: center !important;
     width: 100% !important;
     max-width: 100% !important;
     order: 1;
     height: auto !important;
     pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .landing-brand {
     word-spacing: 0.05em;
     font-size: clamp(36px, 10vw, 64px) !important;
     line-height: 1.05 !important;
-    margin: 0;
+    margin: 0 auto;
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .landing-intro h2,
+  .landing-brand .split-line,
+  .landing-intro .split-line {
+    text-align: center !important;
+    width: 100%;
+    display: block;
   }
 
   .landing-intro h2 {
@@ -76,9 +89,13 @@
     display: none !important;
   }
 
-  .character-rim {
-    width: min(70vw, 280px);
-    height: min(70vw, 280px);
+  /* No backlight glow under the avatar on phone/tablet */
+  .character-rim,
+  .character-loaded .character-rim {
+    display: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+    visibility: hidden !important;
   }
 
   .landing-info {

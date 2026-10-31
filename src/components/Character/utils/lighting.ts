@@ -66,12 +66,15 @@ const setLighting = (scene: THREE.Scene) => {
       duration: duration,
       ease: ease,
     });
-    gsap.to(".character-rim", {
-      y: "55%",
-      opacity: 1,
-      delay: 0.2,
-      duration: 2,
-    });
+    // Keep the rim glow on desktop only — mobile stacks the avatar without backlight.
+    if (window.innerWidth > 1024) {
+      gsap.to(".character-rim", {
+        y: "55%",
+        opacity: 1,
+        delay: 0.2,
+        duration: 2,
+      });
+    }
   }
 
   return { setPointLight, turnOnLights };
