@@ -69,7 +69,7 @@
     width: 100%;
     position: relative;
     z-index: 1;
-    margin: -4px 0 -20px;
+    margin: 0;
   }
 
   .character-model {
@@ -78,17 +78,17 @@
     left: auto !important;
     bottom: auto !important;
     transform: none !important;
-    width: min(100vw, 480px) !important;
-    height: min(52vh, 420px) !important;
-    max-height: 420px;
+    width: min(100%, 520px) !important;
+    height: min(58vh, 480px) !important;
+    max-height: 520px;
     margin: 0 auto;
     z-index: 1;
     overflow: hidden;
   }
 
   .character-hover {
-    width: 220px;
-    height: 220px;
+    width: 280px;
+    height: 280px;
   }
 
   .character-model::after,
@@ -173,14 +173,9 @@
     padding-bottom: 8px;
   }
 
-  .character-container {
-    margin: -4px 0 -16px;
-  }
-
   .character-model {
-    width: min(100vw, 420px) !important;
-    height: min(48vh, 380px) !important;
-    max-height: 380px;
+    height: min(52vh, 400px) !important;
+    max-height: 400px;
   }
 }
 

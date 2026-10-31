@@ -49,8 +49,8 @@ const Scene = () => {
       );
       camera.position.z = 10;
       if (isMobileHero) {
-        camera.position.set(0, 14.35, 18.5);
-        camera.zoom = 1.85;
+        camera.position.set(0, 14.2, 20.5);
+        camera.zoom = 1.55;
       } else {
         camera.position.set(-0.35, 13.0, 24.5);
         camera.zoom = 1.08;
