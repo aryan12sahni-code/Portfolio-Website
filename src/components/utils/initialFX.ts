@@ -9,13 +9,20 @@ export function initialFX() {
   }
   document.getElementsByTagName("main")[0].classList.add("main-active");
   gsap.to("body", {
-    backgroundColor: "#0b080c",
+    backgroundColor: "#04090c",
     duration: 0.5,
     delay: 1,
   });
 
-  const selectors = [".landing-info h3", ".landing-intro h2", ".landing-intro h1"];
-  const elements = selectors.flatMap(selector => Array.from(document.querySelectorAll(selector)));
+  const selectors = [
+    ".landing-eyebrow",
+    ".landing-brand",
+    ".landing-role",
+    ".landing-info h3",
+  ];
+  const elements = selectors.flatMap((selector) =>
+    Array.from(document.querySelectorAll(selector))
+  );
   var landingText = new TextSplitter(elements, {
     type: "chars,lines",
     linesClass: "split-line",
@@ -73,65 +80,16 @@ export function initialFX() {
     }
   );
 
-  var landingText3 = new TextSplitter(".landing-h2-info-1", TextProps);
-  var landingText4 = new TextSplitter(".landing-h2-1", TextProps);
-  var landingText5 = new TextSplitter(".landing-h2-2", TextProps);
-
-  LoopText(landingText2, landingText3);
-  LoopText(landingText4, landingText5);
-}
-
-function LoopText(Text1: TextSplitter, Text2: TextSplitter) {
-  var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-  const delay = 4;
-  const delay2 = delay * 2 + 1;
-
-  tl.fromTo(
-    Text2.chars,
-    { opacity: 0, y: 80 },
+  // Soft pulse on the primary hero line — no looping twin text like the template.
+  gsap.fromTo(
+    ".landing-h2-1",
+    { opacity: 0, y: 24 },
     {
       opacity: 1,
-      duration: 1.2,
-      ease: "power3.inOut",
       y: 0,
-      stagger: 0.1,
-      delay: delay,
-    },
-    0
-  )
-    .fromTo(
-      Text1.chars,
-      { y: 80 },
-      {
-        duration: 1.2,
-        ease: "power3.inOut",
-        y: 0,
-        stagger: 0.1,
-        delay: delay2,
-      },
-      1
-    )
-    .fromTo(
-      Text1.chars,
-      { y: 0 },
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        stagger: 0.1,
-        delay: delay,
-      },
-      0
-    )
-    .to(
-      Text2.chars,
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        stagger: 0.1,
-        delay: delay2,
-      },
-      1
-    );
+      duration: 1,
+      ease: "power2.out",
+      delay: 0.6,
+    }
+  );
 }

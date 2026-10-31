@@ -60,7 +60,7 @@ const Work = () => {
     <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
-          Selected <span>Projects</span>
+          Built <span>in public</span>
         </h2>
         <div className="work-flex">
           {config.projects.map((project, index) => (

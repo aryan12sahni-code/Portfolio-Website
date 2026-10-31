@@ -17,11 +17,11 @@
   -webkit-user-select: none;
   -moz-user-select: none;
 
-  /* Signal Lab — teal/amber, distinct from the reference purple */
+  /* Signal Lab — teal/amber on deep ink, not the reference purple */
   --accentColor: #2dd4bf;
   --accentSecondary: #f59e0b;
-  --backgroundColor: #050a0e;
-  --panelColor: #0c1419;
+  --backgroundColor: #04090c;
+  --panelColor: #0a1518;
   --vh: 100vh;
   --vh: 100svh;
 }

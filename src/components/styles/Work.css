@@ -297,7 +297,7 @@
 
 .see-all-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(194, 164, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(45, 212, 191, 0.35);
 }
 
 /* Mobile: Stack work items vertically when GSAP pinning is disabled */

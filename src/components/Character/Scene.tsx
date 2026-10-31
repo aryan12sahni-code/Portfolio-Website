@@ -38,10 +38,12 @@ const Scene = () => {
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
 
-      const camera = new THREE.PerspectiveCamera(14.5, aspect, 0.1, 1000);
+      // Slightly tighter, lower framing so the avatar reads differently
+      // from the stock redoyanulhaque.me hero crop.
+      const camera = new THREE.PerspectiveCamera(15.2, aspect, 0.1, 1000);
       camera.position.z = 10;
-      camera.position.set(0, 13.1, 24.7);
-      camera.zoom = 1.1;
+      camera.position.set(0.15, 12.85, 24.2);
+      camera.zoom = 1.05;
       camera.updateProjectionMatrix();
 
       let headBone: THREE.Object3D | null = null;

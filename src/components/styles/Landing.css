@@ -40,21 +40,11 @@
     height: auto !important;
   }
 
-  .landing-intro h1 {
+  .landing-brand {
     word-spacing: 0.1em;
-    font-size: 32px !important;
-    /* Ensure nice size */
-    line-height: 1.2 !important;
+    font-size: 48px !important;
+    line-height: 0.95 !important;
     margin: 0;
-  }
-
-  /* Ensure name parts display correctly */
-  .landing-intro h1 br {
-    display: block;
-    /* Keep break on mobile for 2 lines, or use display:none for 1 line */
-    content: " ";
-    /* Fallback */
-    margin-bottom: 5px;
   }
 
   /* Subtitles Container */
@@ -144,7 +134,23 @@
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 40px rgba(194, 164, 255, 0.4));
+    filter: drop-shadow(0 0 40px rgba(45, 212, 191, 0.35));
+  }
+
+  .landing-eyebrow {
+    justify-content: center;
+  }
+
+  .landing-brand {
+    font-size: 48px !important;
+    line-height: 0.95 !important;
+  }
+
+  .landing-role {
+    font-size: 14px !important;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -169,13 +175,13 @@
   left: 0%;
   z-index: 15;
   position: fixed;
-  width: 300px;
-  height: 300px;
-  background-color: #2dd4bf;
-  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
-  filter: blur(60px);
+  width: 340px;
+  height: 340px;
+  background-color: #f59e0b;
+  box-shadow: inset -40px 30px 60px rgba(13, 148, 136, 0.55);
+  filter: blur(70px);
   border-radius: 50%;
-  animation: loadingCircle 5s linear infinite;
+  animation: loadingCircle 7s linear infinite;
 }
 
 .nav-fade {
@@ -209,13 +215,13 @@
   z-index: 9;
   position: fixed;
   display: none;
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   background-color: #2dd4bf;
-  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
-  filter: blur(50px);
+  box-shadow: inset -40px 30px 55px rgba(245, 158, 11, 0.45);
+  filter: blur(55px);
   border-radius: 50%;
-  animation: loadingCircle2 5s linear infinite;
+  animation: loadingCircle2 8s linear infinite;
 }
 
 @keyframes loadingCircle2 {
@@ -241,17 +247,16 @@
 
 .character-rim {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 420px;
+  height: 420px;
   z-index: 1;
-  background-color: #14b8a6;
-  transform: translate(-50%, 36%) scaleX(1.4);
-  box-shadow: inset 66px 35px 85px 0px rgba(13, 148, 136, 0.7);
-  filter: blur(50px);
+  background: radial-gradient(circle, #f59e0b 0%, #14b8a6 55%, transparent 75%);
+  box-shadow: inset 40px 20px 80px 0px rgba(245, 158, 11, 0.45);
+  filter: blur(48px);
   border-radius: 50%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 100%) scale(1.4);
+  transform: translate(-50%, 100%) scale(1.35);
   opacity: 0;
 }
 
@@ -321,66 +326,101 @@
 .landing-intro {
   position: absolute;
   z-index: 9;
-  top: 5%;
+  top: 8%;
   left: 0;
+  max-width: min(520px, 48vw);
 }
 
-.landing-intro h2 {
-  margin: 0;
-  color: var(--accentColor);
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 2px;
-}
-
-.landing-intro h1 {
-  margin: 0;
-  letter-spacing: 2px;
-  font-size: 28px;
-  line-height: 28px;
+.landing-eyebrow {
+  margin: 0 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accentSecondary);
+  font-size: 13px;
   font-weight: 500;
-  font-family: "Geist", sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-/* .landing-intro h1 span {
-   font-weight: 200; 
-} */
+.landing-eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accentColor);
+  box-shadow: 0 0 12px var(--accentColor);
+}
+
+.landing-brand {
+  margin: 0;
+  font-family: "Syne", "DM Sans", sans-serif;
+  font-weight: 800;
+  font-size: clamp(42px, 7vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #f4faf9;
+}
+
+.landing-brand span {
+  display: block;
+  color: transparent;
+  background: linear-gradient(120deg, #2dd4bf 10%, #f59e0b 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.landing-role {
+  margin: 16px 0 0;
+  max-width: 320px;
+  color: rgba(232, 238, 242, 0.72);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+}
 
 .landing-info {
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  bottom: 40px;
+  left: 0;
+  right: auto;
+  transform: none;
+  bottom: 48px;
   top: inherit;
   z-index: 9;
+  max-width: min(480px, 46vw);
 }
 
 .landing-info h3 {
-  font-size: 22px;
-  letter-spacing: 2px;
-  font-weight: 300;
-  color: var(--accentColor);
-  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--accentSecondary);
+  margin: 0 0 8px;
 }
 
 .landing-info h2 {
   margin: 0;
-  margin-top: -20px;
-  margin-left: 20px;
-  font-family: "Geist", sans-serif;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 40px;
+  margin-top: 0;
+  margin-left: 0;
+  font-family: "Syne", "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.25;
   position: relative;
   display: flex;
-  flex-wrap: nowrap;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  white-space: nowrap;
+  flex-wrap: wrap;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  white-space: normal;
+  color: rgba(232, 238, 242, 0.88);
 }
 
 .landing-h2-info {
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 360px;
 }
 
 .landing-h2-info-1 {
@@ -391,13 +431,13 @@
 
 h2.landing-info-h2 {
   color: #2dd4bf;
-  font-size: 36px;
-  width: 150%;
-  margin: 0;
-  font-family: "Geist", sans-serif;
-  font-weight: 600;
+  font-size: 28px;
+  width: auto;
+  margin: 0 0 6px;
+  font-family: "Syne", "DM Sans", sans-serif;
+  font-weight: 700;
   position: relative;
-  margin-left: -5px;
+  margin-left: 0;
 }
 
 .landing-h2-2 {
@@ -429,25 +469,16 @@ h2.landing-info-h2 {
   }
 
   .landing-info h3 {
-    font-size: 18px;
-  }
-
-  .landing-intro h2 {
-    font-size: 18px;
-  }
-
-  .landing-intro h1 {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 13px;
   }
 
   .landing-info h2 {
-    font-size: 35px;
-    line-height: 40px;
+    font-size: 18px;
+    line-height: 1.3;
   }
 
   h2.landing-info-h2 {
-    font-size: 38px;
+    font-size: 24px;
   }
 }
 
@@ -456,26 +487,17 @@ h2.landing-info-h2 {
     height: 80vh;
   }
 
-  .landing-intro h2 {
-    font-size: 25px;
-  }
-
-  .landing-intro h1 {
-    font-size: 40px;
-    line-height: 35px;
-  }
-
   .landing-info h3 {
-    font-size: 25px;
+    font-size: 14px;
   }
 
   .landing-info h2 {
-    font-size: 45px;
-    line-height: 42px;
+    font-size: 20px;
+    line-height: 1.35;
   }
 
   h2.landing-info-h2 {
-    font-size: 55px;
+    font-size: 30px;
   }
 }
 
@@ -497,63 +519,63 @@ h2.landing-info-h2 {
     display: none;
   }
 
+  /* Stack brand + tagline on the LEFT — unlike the reference split L/R. */
   .landing-intro {
-    top: 40%;
-    left: auto;
-    right: 66%;
-    transform: translate(0%, -50%);
+    top: 28%;
+    left: 0;
+    right: auto;
+    transform: none;
+    max-width: min(460px, 38vw);
   }
 
   .landing-info {
     bottom: auto;
-    top: 51%;
-    z-index: inherit;
+    top: 62%;
+    z-index: 9;
     text-align: left;
-    transform: translate(0%, -50%);
+    transform: none;
     right: auto;
-    left: 66%;
+    left: 0;
+    max-width: min(420px, 36vw);
   }
 }
 
 @media screen and (min-width: 1200px) {
   .landing-intro {
-    top: 40%;
-    left: auto;
-    right: 70%;
-    transform: translate(0%, -50%);
+    top: 26%;
+    left: 0;
+    right: auto;
+    transform: none;
+    max-width: min(520px, 36vw);
   }
 
   .landing-info {
     bottom: auto;
-    top: 51%;
-    z-index: inherit;
+    top: 64%;
+    z-index: 9;
     text-align: left;
-    transform: translate(0%, -50%);
+    transform: none;
     right: auto;
-    left: 70%;
+    left: 0;
+    max-width: min(460px, 34vw);
   }
 }
 
 @media screen and (min-width: 1600px) {
-  .landing-intro h2 {
-    font-size: 35px;
-  }
-
-  .landing-intro h1 {
-    font-size: 60px;
-    line-height: 55px;
+  .landing-brand {
+    font-size: 96px;
   }
 
   .landing-info h3 {
-    font-size: 35px;
+    font-size: 15px;
   }
 
   .landing-info h2 {
-    font-size: 65px;
-    line-height: 62px;
+    font-size: 24px;
+    line-height: 1.35;
   }
 
   h2.landing-info-h2 {
-    font-size: 75px;
+    font-size: 36px;
   }
 }

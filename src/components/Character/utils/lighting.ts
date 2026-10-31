@@ -3,10 +3,10 @@ import { RGBELoader } from "three-stdlib";
 import { gsap } from "gsap";
 
 const setLighting = (scene: THREE.Scene) => {
-  // Cool teal key light instead of the template purple.
-  const directionalLight = new THREE.DirectionalLight(0x9ff5e8, 0);
+  // Warm amber key + cool teal fill — opposite of the reference purple wash.
+  const directionalLight = new THREE.DirectionalLight(0xffd6a5, 0);
   directionalLight.intensity = 0;
-  directionalLight.position.set(-0.47, -0.32, -1);
+  directionalLight.position.set(0.55, -0.2, -1);
   directionalLight.castShadow = true;
   directionalLight.shadow.mapSize.width = 1024;
   directionalLight.shadow.mapSize.height = 1024;
@@ -20,8 +20,12 @@ const setLighting = (scene: THREE.Scene) => {
   scene.add(pointLight);
 
   const fillLight = new THREE.PointLight(0xf59e0b, 0, 40, 2);
-  fillLight.position.set(-4, 8, 2);
+  fillLight.position.set(-5, 7, 3);
   scene.add(fillLight);
+
+  const rimLight = new THREE.PointLight(0x5eead4, 0, 30, 2);
+  rimLight.position.set(2, 4, -3);
+  scene.add(rimLight);
 
   new RGBELoader()
     .setPath("/models/")
@@ -43,17 +47,22 @@ const setLighting = (scene: THREE.Scene) => {
   const ease = "power2.inOut";
   function turnOnLights() {
     gsap.to(scene, {
-      environmentIntensity: 0.58,
+      environmentIntensity: 0.52,
       duration: duration,
       ease: ease,
     });
     gsap.to(directionalLight, {
-      intensity: 1.05,
+      intensity: 1.15,
       duration: duration,
       ease: ease,
     });
     gsap.to(fillLight, {
-      intensity: 0.35,
+      intensity: 0.45,
+      duration: duration,
+      ease: ease,
+    });
+    gsap.to(rimLight, {
+      intensity: 0.55,
       duration: duration,
       ease: ease,
     });
