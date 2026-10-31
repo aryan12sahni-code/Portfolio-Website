@@ -1,12 +1,12 @@
 # Aryan Sahni — Portfolio
 
-Personal portfolio for **Aryan Sahni**: product operations, analytics, and industrial AI. Built as a single-page Next.js site with a custom “Signal Lab” visual system — intro boot sequence, interactive impact console, numbered project log, and scroll reveals.
+Personal portfolio for **Aryan Sahni**: product operations, analytics, and industrial AI. Dark, motion-heavy single-page Next.js site — boot marquee loader, cursor orb, GSAP/Framer scroll reveals, glowing timeline, magnetic CTAs, skills marquee, and a floating resume download.
 
 ## Stack
 
 - Next.js (App Router) + TypeScript
 - Tailwind CSS + shadcn/ui
-- Framer Motion
+- Framer Motion + GSAP ScrollTrigger
 
 ## Run locally
 

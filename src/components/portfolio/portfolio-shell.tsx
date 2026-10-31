@@ -3,11 +3,15 @@
 import { useCallback, useEffect, useState } from "react";
 import { About } from "./about";
 import { Contact } from "./contact";
+import { CursorOrb } from "./cursor-orb";
 import { Education } from "./education";
 import { Experience } from "./experience";
+import { FloatingResume } from "./floating-resume";
 import { Hero } from "./hero";
 import { IntroLoader } from "./intro-loader";
+import { MouseProvider } from "./mouse-provider";
 import { Projects } from "./projects";
+import { ScrollProgress } from "./scroll-progress";
 import { SiteFooter } from "./site-footer";
 import { SiteNav } from "./site-nav";
 import { Skills } from "./skills";
@@ -19,32 +23,37 @@ export function PortfolioShell() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get("skip") === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      params.get("skip") === "1" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       setShowLoader(false);
       setReady(true);
     }
   }, []);
 
-  // Safety net so the site never stays blocked behind the boot screen.
   useEffect(() => {
     if (!showLoader || ready) return;
     const failsafe = window.setTimeout(() => {
       setShowLoader(false);
       setReady(true);
-    }, 4000);
+    }, 4500);
     return () => window.clearTimeout(failsafe);
   }, [showLoader, ready]);
 
   return (
-    <>
+    <MouseProvider>
       {showLoader && !ready && <IntroLoader onComplete={onComplete} />}
       <div
         className={
           ready
-            ? "opacity-100 transition-opacity duration-500"
-            : "pointer-events-none opacity-0"
+            ? "min-h-full bg-[var(--void)] text-white opacity-100 transition-opacity duration-700"
+            : "pointer-events-none min-h-full bg-[var(--void)] opacity-0"
         }
       >
+        <div className="noise-overlay" aria-hidden />
+        <CursorOrb />
+        <ScrollProgress />
         <SiteNav />
         <main>
           <Hero />
@@ -56,7 +65,8 @@ export function PortfolioShell() {
           <Contact />
         </main>
         <SiteFooter />
+        {ready && <FloatingResume />}
       </div>
-    </>
+    </MouseProvider>
   );
 }

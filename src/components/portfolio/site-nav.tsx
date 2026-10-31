@@ -27,19 +27,19 @@ export function SiteNav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background,border,backdrop-filter] duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-[background,border,backdrop-filter,box-shadow] duration-300",
         scrolled || open
-          ? "border-b border-[var(--ink)]/8 bg-[var(--mist)]/85 backdrop-blur-md"
+          ? "border-b border-white/10 bg-black/70 shadow-[0_10px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.25rem] sm:px-8">
         <a
           href="#top"
-          className="font-[family-name:var(--font-display)] text-lg tracking-tight text-[var(--ink)] sm:text-xl"
+          className="font-[family-name:var(--font-display)] text-lg tracking-tight text-white sm:text-xl"
         >
           {profile.firstName}
-          <span className="text-[var(--signal)]">.</span>
+          <span className="text-[var(--violet)]">.</span>
           {profile.lastName}
         </a>
 
@@ -48,14 +48,14 @@ export function SiteNav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)]"
+              className="text-sm tracking-wide text-white/60 uppercase transition-colors hover:text-white"
             >
               {link.label}
             </a>
           ))}
           <Button
             asChild
-            className="h-10 rounded-md bg-[var(--ink)] px-4 text-[var(--mist)] hover:bg-[var(--ink)]/90"
+            className="h-10 rounded-full bg-white px-4 text-black hover:bg-white/90"
           >
             <a href={`mailto:${profile.email}`}>Email me</a>
           </Button>
@@ -63,7 +63,7 @@ export function SiteNav() {
 
         <button
           type="button"
-          className="inline-flex size-10 items-center justify-center rounded-md border border-[var(--ink)]/12 md:hidden"
+          className="inline-flex size-10 items-center justify-center rounded-md border border-white/15 text-white md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -76,7 +76,7 @@ export function SiteNav() {
       <div
         id="mobile-nav"
         className={cn(
-          "border-t border-[var(--ink)]/8 bg-[var(--mist)] md:hidden",
+          "border-t border-white/10 bg-black/95 md:hidden",
           open ? "block" : "hidden"
         )}
       >
@@ -85,7 +85,7 @@ export function SiteNav() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-md px-3 py-3 text-base text-[var(--ink)]"
+              className="rounded-md px-3 py-3 text-base text-white"
               onClick={() => setOpen(false)}
             >
               {link.label}
@@ -93,7 +93,7 @@ export function SiteNav() {
           ))}
           <a
             href={`mailto:${profile.email}`}
-            className="mt-2 rounded-md bg-[var(--ink)] px-3 py-3 text-center text-[var(--mist)]"
+            className="mt-2 rounded-full bg-[var(--violet)] px-3 py-3 text-center text-white"
             onClick={() => setOpen(false)}
           >
             Email me
