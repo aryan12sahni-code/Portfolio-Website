@@ -1,14 +1,16 @@
 # Aryan Sahni — Portfolio
 
-Interactive 3D developer portfolio adapted from the open-source [red1-for-hek/portfolio-website](https://github.com/red1-for-hek/portfolio-website) template (MIT), personalized for **Aryan Sahni**.
+**Signal Lab** portfolio for **Aryan Sahni** — product operations & industrial AI.
+
+Built with React, Three.js, and GSAP. Visual identity is intentionally distinct (teal/amber on deep navy, Syne + DM Sans, custom avatar materials and copy).
 
 ## Features
 
-- Three.js / WebGL character scene with mouse interaction
+- Mouse-driven 3D character with custom face/hair materials
 - GSAP + Lenis smooth scroll
-- Boot loader with marquee + percentage
-- Custom cursor, social sidebar, floating resume
-- Career timeline, horizontal work gallery, `/myworks` page
+- Dark Signal Lab theme (teal/amber accents)
+- Project gallery with full descriptions, `/myworks` page
+- Resume download + contact CTAs
 
 ## Run locally
 

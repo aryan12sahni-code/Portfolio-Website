@@ -10,7 +10,7 @@ const CallToAction = () => {
           className="cta-btn cta-btn-play"
           data-cursor="disable"
         >
-          Talk With Me →
+          Let’s Connect →
         </a>
 
         <a
@@ -18,7 +18,7 @@ const CallToAction = () => {
           className="cta-btn cta-btn-hire"
           data-cursor="disable"
         >
-          Hire Me →
+          Work With Me →
         </a>
       </div>
     </div>

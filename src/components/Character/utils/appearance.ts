@@ -3,8 +3,9 @@ import * as THREE from "three";
 const FACE_SKIN_MESHES = new Set(["Ear001", "Neck", "Plane007", "Hand"]);
 
 /**
- * Restyle face materials only. Do not touch hair scale/position — the mesh
- * ships with a large baked scale and any overwrite makes hair look uneven.
+ * Make the stock avatar read as a different person: warmer skin, fuller
+ * visible hair, reshaped face proportions, and teal-tinted lighting response.
+ * Never overwrite hair's baked scale — only materials + gentle local offsets.
  */
 export function customizeCharacterAppearance(root: THREE.Object3D) {
   root.traverse((child: any) => {
@@ -24,38 +25,44 @@ export function customizeCharacterAppearance(root: THREE.Object3D) {
       const isHair = name === "hair" || matName.includes("030");
       const isBrows = name === "eyebrow" || matName.includes("014");
       const isEyes = name.startsWith("eyes") || matName.includes("eyes");
+      const isBody = name === "bodyshirt";
 
-      if (!(isFaceSkin || isHair || isBrows || isEyes)) return material;
+      if (!(isFaceSkin || isHair || isBrows || isEyes || isBody)) return material;
 
       const unique = material.clone() as THREE.MeshStandardMaterial;
 
-      if (isFaceSkin && unique.color) {
-        unique.color.set("#c9956f");
-        unique.roughness = 0.48;
+      if ((isFaceSkin || isBody) && unique.color) {
+        // Distinct warmer bronze skin vs template grey / reference look.
+        unique.color.set("#b88862");
+        unique.roughness = 0.52;
         unique.metalness = 0;
+        if (unique.emissive) unique.emissive.set("#3a1c0c");
+        unique.emissiveIntensity = 0.05;
         unique.needsUpdate = true;
       }
 
       if (isHair && unique.color) {
-        // Keep hair on its original geometry; only recolor so it stays even.
-        unique.color.set("#2b1a12");
-        unique.roughness = 0.62;
-        unique.metalness = 0.02;
+        // Clearly visible dark espresso hair (not purple, not invisible black).
+        unique.color.set("#1c120c");
+        unique.roughness = 0.48;
+        unique.metalness = 0.08;
+        if (unique.emissive) unique.emissive.set("#0d3d38");
+        unique.emissiveIntensity = 0.12;
         unique.side = THREE.DoubleSide;
         unique.needsUpdate = true;
       }
 
       if (isBrows && unique.color) {
-        unique.color.set("#24160f");
-        unique.roughness = 0.7;
+        unique.color.set("#140e0a");
+        unique.roughness = 0.75;
         unique.needsUpdate = true;
       }
 
       if (isEyes) {
-        if (unique.color) unique.color.set("#eef5ff");
-        if (unique.emissive) unique.emissive.set("#1b3a66");
-        unique.emissiveIntensity = 0.18;
-        unique.roughness = 0.12;
+        if (unique.color) unique.color.set("#f7fbff");
+        if (unique.emissive) unique.emissive.set("#0f766e");
+        unique.emissiveIntensity = 0.2;
+        unique.roughness = 0.1;
         unique.needsUpdate = true;
       }
 
@@ -66,17 +73,36 @@ export function customizeCharacterAppearance(root: THREE.Object3D) {
       ? (nextMaterials as THREE.Material[])
       : (nextMaterials[0] as THREE.Material);
 
-    if (mesh.name === "Plane007" && mesh.morphTargetInfluences) {
-      const dict = mesh.morphTargetDictionary || {};
-      if (dict.eyeL_60 != null) mesh.morphTargetInfluences[dict.eyeL_60] = 0.28;
-      if (dict["Key 2"] != null) mesh.morphTargetInfluences[dict["Key 2"]] = 0.15;
+    // Reshape face silhouette without touching hair transforms.
+    if (mesh.name === "Plane007") {
+      mesh.scale.set(1.06, 0.97, 1.04);
+      if (mesh.morphTargetInfluences) {
+        const dict = mesh.morphTargetDictionary || {};
+        if (dict.eyeL_60 != null) mesh.morphTargetInfluences[dict.eyeL_60] = 0.4;
+        if (dict.eyeL_100 != null) mesh.morphTargetInfluences[dict.eyeL_100] = 0.1;
+        if (dict["Key 2"] != null) mesh.morphTargetInfluences[dict["Key 2"]] = 0.25;
+      }
+    }
+
+    if (mesh.name === "Ear001") {
+      mesh.scale.multiplyScalar(1.05);
+    }
+
+    if (mesh.name === "Eyebrow") {
+      mesh.scale.set(1.1, 0.95, 1);
+      mesh.position.y += 0.005;
+    }
+
+    if (mesh.name === "EYEs001") {
+      mesh.scale.multiplyScalar(1.08);
     }
   });
 
-  // Ensure hair stays visible without distorting its baked transform.
   const hair = root.getObjectByName("hair");
   if (hair) {
     hair.visible = true;
     hair.frustumCulled = false;
+    // Tiny yaw so the cut reads differently, without breaking baked scale.
+    hair.rotation.y += 0.08;
   }
 }
