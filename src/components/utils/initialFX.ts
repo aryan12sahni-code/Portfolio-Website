@@ -14,12 +14,7 @@ export function initialFX() {
     delay: 1,
   });
 
-  const selectors = [
-    ".landing-eyebrow",
-    ".landing-brand",
-    ".landing-role",
-    ".landing-info h3",
-  ];
+  const selectors = [".landing-info h3", ".landing-intro h2", ".landing-brand"];
   const elements = selectors.flatMap((selector) =>
     Array.from(document.querySelectorAll(selector))
   );
@@ -80,7 +75,6 @@ export function initialFX() {
     }
   );
 
-  // Soft pulse on the primary hero line — no looping twin text like the template.
   gsap.fromTo(
     ".landing-h2-1",
     { opacity: 0, y: 24 },

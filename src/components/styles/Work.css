@@ -1,7 +1,12 @@
 .work-section h2 {
-  margin-top: 100px;
-  font-size: 70px;
-  font-weight: 500;
+  margin: 72px 0 24px;
+  padding: 0;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 600;
+  font-family: "Syne", "DM Sans", sans-serif;
+  line-height: 1.1;
+  width: 100%;
+  text-align: left;
 }
 
 .work-section h2>span {
@@ -13,6 +18,7 @@
   height: 100vh;
   box-sizing: border-box;
   will-change: transform;
+  overflow: hidden;
 }
 
 .work-container {
@@ -20,28 +26,32 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-sizing: border-box;
   align-content: stretch;
+  overflow: hidden;
 }
 
 .work-flex {
   width: 100%;
   display: flex;
   height: 100%;
-  margin-left: -80px;
-  padding-right: 120px;
+  margin-left: 0;
+  padding-right: 80px;
   position: relative;
+  align-items: stretch;
 }
 
 .work-box {
-  padding: 80px;
+  padding: 48px 56px;
   display: flex;
   flex-direction: column;
-  width: 600px;
+  width: 560px;
   box-sizing: border-box;
   border-right: 1px solid #363636;
   flex-shrink: 0;
-  gap: 50px;
-  justify-content: start;
+  gap: 28px;
+  justify-content: space-between;
+  min-height: 0;
 }
 
 .work-flex .work-box:nth-child(even) {
@@ -64,26 +74,42 @@
   top: 100%;
 }
 
+.work-info {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
 .work-title {
   justify-content: space-between;
+  align-items: flex-start;
   display: flex;
   width: 100%;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .work-title>div {
   text-align: right;
+  flex: 1;
+  min-width: 0;
+}
+
+.work-title>div h4 {
+  word-break: break-word;
 }
 
 .work-title h3 {
-  font-size: 50px;
-  line-height: 50px;
+  font-size: 44px;
+  line-height: 1;
   margin: 0;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .work-info h4 {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 500;
   margin: 0;
 }
@@ -96,16 +122,20 @@
 }
 
 .work-info>p {
-  width: 90%;
+  width: 100%;
 }
 
 .work-info .work-description {
-  width: 95%;
-  margin: 8px 0 22px;
-  font-size: 15px;
-  line-height: 1.55;
+  width: 100%;
+  margin: 8px 0 18px;
+  font-size: 14px;
+  line-height: 1.5;
   color: #cfcfcf;
   font-weight: 300;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .work-image {
@@ -178,7 +208,7 @@
 
 @media only screen and (max-width: 1400px) {
   .work-title h3 {
-    font-size: 35px;
+    font-size: 32px;
   }
 
   .work-info p {
@@ -190,29 +220,34 @@
   }
 
   .work-box {
-    width: 450px;
-    padding: 50px;
+    width: 420px;
+    padding: 36px;
   }
 
   .work-flex {
-    margin-left: -50px;
-    padding-right: 75px;
+    margin-left: 0;
+    padding-right: 48px;
   }
 
   .work-section h2 {
-    font-size: 50px;
+    font-size: 48px;
+    margin-top: 56px;
+  }
+
+  .work-info .work-description {
+    -webkit-line-clamp: 5;
   }
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1100px) {
   .work-box {
-    width: 350px;
-    padding: 30px;
+    width: 360px;
+    padding: 28px;
   }
 
   .work-flex {
-    margin-left: -30px;
-    padding-right: 45px;
+    margin-left: 0;
+    padding-right: 32px;
   }
 }
 
@@ -305,6 +340,11 @@
   .work-section {
     height: auto;
     min-height: auto;
+    overflow: visible;
+  }
+
+  .work-container {
+    overflow: visible;
   }
 
   .work-flex {
@@ -312,12 +352,13 @@
     margin-left: 0;
     padding-right: 0;
     gap: 0;
+    height: auto;
   }
 
   .work-box {
     width: 100%;
     max-width: 100%;
-    padding: 30px 15px;
+    padding: 28px 0;
     border-right: none;
     border-bottom: 1px solid #363636;
     gap: 20px;
@@ -329,17 +370,34 @@
 
   .work-section h2 {
     font-size: 36px;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-top: 48px;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .work-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .work-title>div {
+    text-align: left;
   }
 
   .work-title h3 {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 28px;
+    line-height: 1;
   }
 
   .work-info h4 {
     font-size: 18px;
+  }
+
+  .work-info .work-description {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
   }
 
   .work-image img {
@@ -347,7 +405,7 @@
   }
 
   .work-box-cta {
-    padding: 40px 20px;
+    padding: 40px 0;
     border-bottom: none;
   }
 

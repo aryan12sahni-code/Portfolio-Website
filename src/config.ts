@@ -2,7 +2,7 @@ export const config = {
   developer: {
     name: "Aryan",
     fullName: "Aryan Sahni",
-    title: "Product Operations & Industrial AI",
+    title: "AI Engineer",
     description:
       "Product operations and analytics specialist transitioning into industrial AI. Turning messy product data into decisions teams actually ship.",
   },
@@ -47,19 +47,6 @@ export const config = {
       technologies: ["PowerApps", "Dataverse", "Automation"],
     },
     {
-      position: "M.Sc. Artificial Intelligence",
-      company: "OTH Amberg-Weiden",
-      period: "2026 - Present",
-      location: "Amberg, Germany",
-      description:
-        "Beginning a Master's in Artificial Intelligence for Industrial Applications, focused on applying ML/DL to real industrial and product systems.",
-      responsibilities: [
-        "Industrial AI coursework and applied ML",
-        "Deep learning and data systems for operations",
-      ],
-      technologies: ["Python", "PyTorch", "Machine Learning", "Deep Learning"],
-    },
-    {
       position: "Bachelor of Computer Application",
       company: "Bharati Vidyapeeth University",
       period: "2021 - 2024",
@@ -72,6 +59,19 @@ export const config = {
         "Personal product and analytics projects",
       ],
       technologies: ["Java", "JavaScript", "Python", "SQL", "React"],
+    },
+    {
+      position: "M.Sc. Artificial Intelligence",
+      company: "OTH Amberg-Weiden",
+      period: "2026 - Present",
+      location: "Amberg, Germany",
+      description:
+        "Beginning a Master's in Artificial Intelligence for Industrial Applications, focused on applying ML/DL to real industrial and product systems.",
+      responsibilities: [
+        "Industrial AI coursework and applied ML",
+        "Deep learning and data systems for operations",
+      ],
+      technologies: ["Python", "PyTorch", "Machine Learning", "Deep Learning"],
     },
   ],
   projects: [

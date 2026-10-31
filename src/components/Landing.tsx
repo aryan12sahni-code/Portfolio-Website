@@ -3,26 +3,34 @@ import "./styles/Landing.css";
 import { config } from "../config";
 
 const Landing = ({ children }: PropsWithChildren) => {
+  const nameParts = config.developer.fullName.split(" ");
+  const firstName = nameParts[0] || config.developer.name;
+  const lastName = nameParts.slice(1).join(" ") || "";
+
   return (
     <>
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
           <div className="landing-intro">
-            <p className="landing-eyebrow">{config.social.location}</p>
+            <h2>Hey there —</h2>
             <h1 className="landing-brand">
-              ARYAN
-              <span>SAHNI</span>
+              {firstName.toUpperCase()}
+              {lastName && (
+                <>
+                  <br />
+                  <span>{lastName.toUpperCase()}</span>
+                </>
+              )}
             </h1>
-            <p className="landing-role">{config.developer.title}</p>
           </div>
           <div className="landing-info">
-            <h3>Now shipping</h3>
+            <h3>I am</h3>
             <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Ops → Industrial AI</div>
+              <div className="landing-h2-1">AI Engineer</div>
             </h2>
             <h2>
               <div className="landing-h2-info">
-                Data, dashboards &amp; systems that stick
+                Product ops · Industrial AI
               </div>
             </h2>
           </div>

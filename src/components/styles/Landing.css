@@ -21,7 +21,6 @@
     padding-bottom: 40px;
   }
 
-  /* Fix spacing between name and subtitle */
   .landing-intro {
     position: relative !important;
     top: auto !important;
@@ -30,24 +29,22 @@
     bottom: auto !important;
     transform: none !important;
     padding-top: 40px;
-    /* Shift higher up */
     margin-bottom: 20px;
     z-index: 10;
     text-align: center;
     width: 100% !important;
+    max-width: 100% !important;
     order: 1;
-    /* First: Name */
     height: auto !important;
   }
 
   .landing-brand {
     word-spacing: 0.1em;
-    font-size: 48px !important;
-    line-height: 0.95 !important;
+    font-size: 42px !important;
+    line-height: 1.05 !important;
     margin: 0;
   }
 
-  /* Subtitles Container */
   .landing-info {
     position: relative !important;
     top: auto !important;
@@ -56,30 +53,25 @@
     bottom: auto !important;
     transform: none !important;
     text-align: center;
-    margin-top: 20px;
-    /* Space between name and subtitles */
+    margin-top: 12px;
     z-index: 10;
     background: transparent;
-    padding-bottom: 50px;
-    /* Add bottom padding for scroll space */
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
     height: auto !important;
-    /* Force auto height */
     width: 100% !important;
+    max-width: 100% !important;
     order: 3;
-    /* Third: Subtitles */
   }
 
   .landing-info h3 {
     text-align: center;
-    display: none;
-    /* Hide 'An' if not needed, or keep it static */
+    display: block;
   }
 
-  /* Force static positioning to prevent overlaps */
   .landing-info h2,
   h2.landing-info-h2,
   .landing-h2-1,
@@ -89,31 +81,28 @@
     width: auto;
     margin: 0 !important;
     font-size: 20px !important;
-    line-height: 1.5 !important;
+    line-height: 1.4 !important;
     white-space: normal;
     text-align: center;
     height: auto !important;
     transform: none !important;
-    /* Remove any transforms */
   }
 
-  /* Specific styling for the distinct parts */
   .landing-h2-1 {
-    font-size: 24px !important;
+    font-size: 28px !important;
     color: var(--accentColor);
     font-weight: 700;
   }
 
   .landing-h2-info {
-    font-size: 18px !important;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px !important;
+    color: rgba(255, 255, 255, 0.85);
   }
 
   .landing-info-h2::after {
     display: none;
   }
 
-  /* Show mobile photo */
   .mobile-photo {
     display: block;
     position: relative !important;
@@ -122,8 +111,6 @@
     margin: 0 auto;
     z-index: 1;
     order: 2;
-    /* Second: Photo */
-    /* Add fade mask to bottom */
     -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     pointer-events: none;
@@ -135,22 +122,6 @@
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 0 40px rgba(45, 212, 191, 0.35));
-  }
-
-  .landing-eyebrow {
-    justify-content: center;
-  }
-
-  .landing-brand {
-    font-size: 48px !important;
-    line-height: 0.95 !important;
-  }
-
-  .landing-role {
-    font-size: 14px !important;
-    max-width: 280px;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 
@@ -326,85 +297,61 @@
 .landing-intro {
   position: absolute;
   z-index: 9;
-  top: 8%;
+  top: 12%;
   left: 0;
-  max-width: min(520px, 48vw);
+  text-align: left;
 }
 
-.landing-eyebrow {
-  margin: 0 0 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accentSecondary);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+.landing-intro h2 {
+  margin: 0 0 8px;
+  color: var(--accentColor);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-.landing-eyebrow::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accentColor);
-  box-shadow: 0 0 12px var(--accentColor);
 }
 
 .landing-brand {
   margin: 0;
   font-family: "Syne", "DM Sans", sans-serif;
-  font-weight: 800;
-  font-size: clamp(42px, 7vw, 88px);
-  line-height: 0.92;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #f4faf9;
 }
 
 .landing-brand span {
-  display: block;
   color: transparent;
   background: linear-gradient(120deg, #2dd4bf 10%, #f59e0b 90%);
   -webkit-background-clip: text;
   background-clip: text;
 }
 
-.landing-role {
-  margin: 16px 0 0;
-  max-width: 320px;
-  color: rgba(232, 238, 242, 0.72);
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.45;
-}
-
 .landing-info {
   position: absolute;
-  left: 0;
-  right: auto;
+  right: 0;
+  left: auto;
   transform: none;
-  bottom: 48px;
-  top: inherit;
+  bottom: auto;
+  top: 42%;
   z-index: 9;
-  max-width: min(480px, 46vw);
+  text-align: left;
+  max-width: min(420px, 34vw);
 }
 
 .landing-info h3 {
-  font-size: 14px;
-  letter-spacing: 0.22em;
-  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  font-weight: 400;
   text-transform: uppercase;
   color: var(--accentSecondary);
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 
 .landing-info h2 {
   margin: 0;
-  margin-top: 0;
-  margin-left: 0;
   font-family: "Syne", "DM Sans", sans-serif;
   font-weight: 700;
   font-size: 22px;
@@ -431,13 +378,16 @@
 
 h2.landing-info-h2 {
   color: #2dd4bf;
-  font-size: 28px;
+  font-size: 34px;
   width: auto;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   font-family: "Syne", "DM Sans", sans-serif;
   font-weight: 700;
   position: relative;
-  margin-left: 0;
+}
+
+.landing-h2-1 {
+  white-space: nowrap;
 }
 
 .landing-h2-2 {
@@ -447,16 +397,7 @@ h2.landing-info-h2 {
 }
 
 .landing-info-h2::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 120%;
-  z-index: 3;
-  background-image: linear-gradient(0deg,
-      var(--backgroundColor) 40%,
-      rgba(0, 0, 0, 0) 110%);
-  top: 0;
-  left: 0;
+  display: none;
 }
 
 @media screen and (min-width: 500px) {
@@ -468,8 +409,16 @@ h2.landing-info-h2 {
     z-index: 0;
   }
 
+  .landing-intro h2 {
+    font-size: 16px;
+  }
+
+  .landing-brand {
+    font-size: 40px;
+  }
+
   .landing-info h3 {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .landing-info h2 {
@@ -478,7 +427,7 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 
@@ -487,8 +436,16 @@ h2.landing-info-h2 {
     height: 80vh;
   }
 
+  .landing-intro h2 {
+    font-size: 18px;
+  }
+
+  .landing-brand {
+    font-size: 48px;
+  }
+
   .landing-info h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .landing-info h2 {
@@ -497,7 +454,7 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 30px;
+    font-size: 36px;
   }
 }
 
@@ -519,63 +476,72 @@ h2.landing-info-h2 {
     display: none;
   }
 
-  /* Stack brand + tagline on the LEFT — unlike the reference split L/R. */
+  /* Name LEFT of character, title RIGHT of character */
   .landing-intro {
-    top: 28%;
+    top: 38%;
     left: 0;
     right: auto;
-    transform: none;
-    max-width: min(460px, 38vw);
+    transform: translateY(-50%);
+    max-width: min(360px, 28vw);
+    z-index: 22;
   }
 
   .landing-info {
     bottom: auto;
-    top: 62%;
-    z-index: 9;
+    top: 48%;
+    z-index: 22;
     text-align: left;
-    transform: none;
-    right: auto;
-    left: 0;
-    max-width: min(420px, 36vw);
+    transform: translateY(-50%);
+    right: 0;
+    left: auto;
+    max-width: min(380px, 28vw);
   }
 }
 
 @media screen and (min-width: 1200px) {
   .landing-intro {
-    top: 26%;
+    top: 40%;
     left: 0;
     right: auto;
-    transform: none;
-    max-width: min(520px, 36vw);
+    transform: translateY(-50%);
+    max-width: min(400px, 26vw);
+  }
+
+  .landing-brand {
+    font-size: 56px;
   }
 
   .landing-info {
     bottom: auto;
-    top: 64%;
-    z-index: 9;
+    top: 48%;
+    z-index: 22;
     text-align: left;
-    transform: none;
-    right: auto;
-    left: 0;
-    max-width: min(460px, 34vw);
+    transform: translateY(-50%);
+    right: 0;
+    left: auto;
+    max-width: min(400px, 26vw);
+  }
+
+  h2.landing-info-h2 {
+    font-size: 42px;
   }
 }
 
 @media screen and (min-width: 1600px) {
   .landing-brand {
-    font-size: 96px;
+    font-size: 64px;
   }
 
   .landing-info h3 {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .landing-info h2 {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.35;
   }
 
   h2.landing-info-h2 {
-    font-size: 36px;
+    font-size: 48px;
   }
 }
