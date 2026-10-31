@@ -1,8 +1,12 @@
 import * as THREE from "three";
 
-const FACE_MESHES = new Set(["Ear001", "Neck", "Plane007", "Hand"]);
+const FACE_SKIN_MESHES = new Set(["Ear001", "Neck", "Plane007", "Hand"]);
 
-/** Subtle face makeover so the avatar isn't identical to the template. */
+/**
+ * Restyle the stock avatar so the face reads differently and hair stays visible.
+ * Important: the hair mesh ships with a large baked scale (~11). Never overwrite
+ * that with a ~1.0 scale or the hair disappears.
+ */
 export function customizeCharacterAppearance(root: THREE.Object3D) {
   root.traverse((child: any) => {
     if (!child.isMesh && !child.isSkinnedMesh) return;
@@ -17,7 +21,7 @@ export function customizeCharacterAppearance(root: THREE.Object3D) {
       const name = (mesh.name || "").toLowerCase();
       const matName = (material.name || "").toLowerCase();
 
-      const isFaceSkin = FACE_MESHES.has(mesh.name);
+      const isFaceSkin = FACE_SKIN_MESHES.has(mesh.name);
       const isHair = name === "hair" || matName.includes("030");
       const isBrows = name === "eyebrow" || matName.includes("014");
       const isEyes = name.startsWith("eyes") || matName.includes("eyes");
@@ -27,31 +31,37 @@ export function customizeCharacterAppearance(root: THREE.Object3D) {
       const unique = material.clone() as THREE.MeshStandardMaterial;
 
       if (isFaceSkin && unique.color) {
-        // Warmer, slightly deeper skin than the template's cool grey.
-        unique.color.set("#d7b08c");
-        unique.roughness = Math.min(0.55, (unique.roughness ?? 0.35) + 0.08);
+        // Clearer skin shift vs the template's cool grey.
+        unique.color.set("#c9956f");
+        unique.roughness = 0.48;
         unique.metalness = 0;
+        if (unique.emissive) unique.emissive.set("#2a1208");
+        unique.emissiveIntensity = 0.04;
         unique.needsUpdate = true;
       }
 
       if (isHair && unique.color) {
-        // Soft charcoal-brown instead of pure black.
-        unique.color.set("#1a1410");
-        unique.roughness = 0.72;
+        // Visible deep brown (near-black vanishes on the dark stage).
+        unique.color.set("#3b2416");
+        unique.roughness = 0.55;
+        unique.metalness = 0.05;
+        if (unique.emissive) unique.emissive.set("#1a0c08");
+        unique.emissiveIntensity = 0.08;
+        unique.side = THREE.DoubleSide;
         unique.needsUpdate = true;
       }
 
       if (isBrows && unique.color) {
-        unique.color.set("#2a2118");
-        unique.roughness = 0.65;
+        unique.color.set("#24160f");
+        unique.roughness = 0.7;
         unique.needsUpdate = true;
       }
 
       if (isEyes) {
-        if (unique.color) unique.color.set("#f4f8ff");
-        if (unique.emissive) unique.emissive.set("#102038");
-        unique.emissiveIntensity = 0.15;
-        unique.roughness = 0.18;
+        if (unique.color) unique.color.set("#eef5ff");
+        if (unique.emissive) unique.emissive.set("#1b3a66");
+        unique.emissiveIntensity = 0.22;
+        unique.roughness = 0.12;
         unique.needsUpdate = true;
       }
 
@@ -62,22 +72,37 @@ export function customizeCharacterAppearance(root: THREE.Object3D) {
       ? (nextMaterials as THREE.Material[])
       : (nextMaterials[0] as THREE.Material);
 
-    // Soften the resting expression on the face morph mesh.
+    mesh.visible = true;
+    mesh.frustumCulled = false;
+
+    // Different resting face: slightly narrower lids / soft smile morph.
     if (mesh.name === "Plane007" && mesh.morphTargetInfluences) {
       const dict = mesh.morphTargetDictionary || {};
-      if (dict.eyeL_60 != null) mesh.morphTargetInfluences[dict.eyeL_60] = 0.22;
-      if (dict["Key 2"] != null) mesh.morphTargetInfluences[dict["Key 2"]] = 0.12;
+      if (dict.eyeL_60 != null) mesh.morphTargetInfluences[dict.eyeL_60] = 0.35;
+      if (dict.eyeL_100 != null) mesh.morphTargetInfluences[dict.eyeL_100] = 0.08;
+      if (dict["Key 2"] != null) mesh.morphTargetInfluences[dict["Key 2"]] = 0.2;
     }
   });
 
-  // Slight head proportions tweak for a different silhouette.
-  const face = root.getObjectByName("Face002");
-  if (face) {
-    face.scale.set(1.02, 1.015, 1.03);
-  }
   const hair = root.getObjectByName("hair");
   if (hair) {
-    hair.scale.set(1.04, 1.03, 1.02);
-    hair.position.y += 0.01;
+    hair.visible = true;
+    // Preserve baked scale; only bump volume a little.
+    hair.scale.multiplyScalar(1.12);
+    hair.position.y += 0.02;
+    hair.position.z += 0.015;
   }
+
+  const brows = root.getObjectByName("Eyebrow");
+  if (brows) {
+    brows.scale.multiplyScalar(1.08);
+  }
+
+  const eyes = root.getObjectByName("EYEs001");
+  if (eyes) {
+    eyes.scale.multiplyScalar(1.06);
+  }
+
+  // Keep body/head skin closer to the new face tone where they share the
+  // pale "default" look on neck-adjacent parts only (already handled above).
 }
