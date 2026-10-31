@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: visible !important;
   }
 
   .landing-intro {
@@ -70,6 +71,7 @@
     position: relative;
     z-index: 1;
     margin: 0;
+    overflow: visible;
   }
 
   .character-model {
@@ -78,17 +80,21 @@
     left: auto !important;
     bottom: auto !important;
     transform: none !important;
-    width: min(100%, 520px) !important;
-    height: min(58vh, 480px) !important;
-    max-height: 520px;
+    width: min(100%, 560px) !important;
+    height: min(62vh, 520px) !important;
+    max-height: 560px;
     margin: 0 auto;
     z-index: 1;
-    overflow: hidden;
+    overflow: visible !important;
+  }
+
+  .character-model canvas {
+    overflow: visible !important;
   }
 
   .character-hover {
-    width: 280px;
-    height: 280px;
+    width: 240px;
+    height: 240px;
   }
 
   .character-model::after,
@@ -174,8 +180,8 @@
   }
 
   .character-model {
-    height: min(52vh, 400px) !important;
-    max-height: 400px;
+    height: min(56vh, 440px) !important;
+    max-height: 460px;
   }
 }
 
