@@ -131,6 +131,7 @@
   margin: auto;
   position: relative;
   height: var(--vh);
+  overflow: visible;
 }
 
 .landing-container {
@@ -139,6 +140,7 @@
   height: 100%;
   position: relative;
   max-width: var(--cMaxWidth);
+  overflow: visible;
 }
 
 .landing-circle1 {
@@ -296,10 +298,12 @@
 
 .landing-intro {
   position: absolute;
-  z-index: 9;
+  z-index: 30;
   top: 12%;
   left: 0;
   text-align: left;
+  overflow: visible;
+  pointer-events: none;
 }
 
 .landing-intro h2 {
@@ -313,13 +317,21 @@
 
 .landing-brand {
   margin: 0;
+  padding-bottom: 0.12em;
   font-family: "Syne", "DM Sans", sans-serif;
   font-weight: 700;
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 1.05;
+  font-size: clamp(34px, 4.2vw, 52px);
+  line-height: 1.15;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #f4faf9;
+  overflow: visible;
+  white-space: normal;
+}
+
+.landing-brand .split-line,
+.landing-intro .split-line {
+  overflow: visible;
 }
 
 .landing-brand span {
@@ -336,9 +348,11 @@
   transform: none;
   bottom: auto;
   top: 42%;
-  z-index: 9;
+  z-index: 30;
   text-align: left;
-  max-width: min(420px, 34vw);
+  max-width: min(360px, 30vw);
+  overflow: visible;
+  pointer-events: none;
 }
 
 .landing-info h3 {
@@ -476,60 +490,61 @@ h2.landing-info-h2 {
     display: none;
   }
 
-  /* Name LEFT of character, title RIGHT of character */
+  /* Name LEFT of character, title RIGHT — keep clear of the 3D model */
   .landing-intro {
-    top: 38%;
+    top: 42%;
     left: 0;
     right: auto;
     transform: translateY(-50%);
-    max-width: min(360px, 28vw);
-    z-index: 22;
+    width: max-content;
+    max-width: 34vw;
+    z-index: 30;
   }
 
   .landing-info {
     bottom: auto;
     top: 48%;
-    z-index: 22;
+    z-index: 30;
     text-align: left;
     transform: translateY(-50%);
     right: 0;
     left: auto;
-    max-width: min(380px, 28vw);
+    max-width: min(340px, 28vw);
   }
 }
 
 @media screen and (min-width: 1200px) {
   .landing-intro {
-    top: 40%;
+    top: 42%;
     left: 0;
     right: auto;
     transform: translateY(-50%);
-    max-width: min(400px, 26vw);
+    max-width: 32vw;
   }
 
   .landing-brand {
-    font-size: 56px;
+    font-size: 52px;
   }
 
   .landing-info {
     bottom: auto;
     top: 48%;
-    z-index: 22;
+    z-index: 30;
     text-align: left;
     transform: translateY(-50%);
     right: 0;
     left: auto;
-    max-width: min(400px, 26vw);
+    max-width: min(360px, 26vw);
   }
 
   h2.landing-info-h2 {
-    font-size: 42px;
+    font-size: 40px;
   }
 }
 
 @media screen and (min-width: 1600px) {
   .landing-brand {
-    font-size: 64px;
+    font-size: 58px;
   }
 
   .landing-info h3 {
@@ -542,6 +557,6 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 48px;
+    font-size: 44px;
   }
 }
