@@ -1,13 +1,8 @@
-/* Photo — shown on phone/tablet instead of the heavy 3D character */
 .mobile-photo {
-  display: none;
+  display: none !important;
 }
 
 @media only screen and (max-width: 1024px) {
-  .character-model {
-    display: none !important;
-  }
-
   .landing-section,
   .landing-container {
     height: auto !important;
@@ -17,12 +12,15 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: 72px 0 48px;
+    padding: 72px 0 40px;
   }
 
   .landing-container {
     width: var(--cWidth) !important;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .landing-intro {
@@ -32,7 +30,7 @@
     right: auto !important;
     bottom: auto !important;
     transform: none !important;
-    margin: 0 0 16px;
+    margin: 0 0 8px;
     z-index: 10;
     text-align: center;
     width: 100% !important;
@@ -53,6 +51,36 @@
     font-size: 14px !important;
   }
 
+  .character-container {
+    order: 2;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .character-model {
+    display: block !important;
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: min(100%, 520px) !important;
+    height: min(58vh, 480px) !important;
+    max-height: 520px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+  .character-model::after,
+  .character-model::before {
+    display: none !important;
+  }
+
+  .character-rim {
+    width: min(70vw, 280px);
+    height: min(70vw, 280px);
+  }
+
   .landing-info {
     position: relative !important;
     top: auto !important;
@@ -64,7 +92,7 @@
     margin-top: 8px;
     z-index: 10;
     background: transparent;
-    padding-bottom: 24px;
+    padding-bottom: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,41 +140,17 @@
   .landing-info-h2::after {
     display: none;
   }
-
-  .mobile-photo {
-    display: block;
-    position: relative !important;
-    width: min(72vw, 340px);
-    margin: 8px auto 0;
-    z-index: 1;
-    order: 2;
-    -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
-    pointer-events: none;
-    transform: none !important;
-    border-radius: 24px;
-    overflow: hidden;
-  }
-
-  .mobile-photo img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: center top;
-    filter: drop-shadow(0 0 36px rgba(45, 212, 191, 0.3));
-  }
 }
 
 @media only screen and (max-width: 480px) {
   .landing-section,
   .landing-container {
     padding-top: 64px;
-    padding-bottom: 32px;
+    padding-bottom: 28px;
   }
 
-  .mobile-photo {
-    width: min(78vw, 280px);
+  .character-model {
+    height: min(52vh, 400px) !important;
   }
 }
 

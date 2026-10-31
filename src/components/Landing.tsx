@@ -34,17 +34,8 @@ const Landing = ({ children }: PropsWithChildren) => {
               </div>
             </h2>
           </div>
-          <div className="mobile-photo">
-            <img
-              src="/images/aryan-portrait.png"
-              alt={config.developer.fullName}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-          </div>
+          {children}
         </div>
-        {children}
       </div>
     </>
   );

@@ -13,16 +13,11 @@ import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
-  const [isDesktopView, setIsDesktopView] = useState<boolean>(
-    window.innerWidth > 1024
-  );
-  const [isMobile] = useState<boolean>(window.innerWidth <= 768);
   const [shouldRenderCharacter, setShouldRenderCharacter] = useState(false);
 
   useEffect(() => {
     const resizeHandler = () => {
       setSplitText();
-      setIsDesktopView(window.innerWidth > 1024);
     };
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
@@ -32,21 +27,25 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    if (window.innerWidth <= 1024) return;
-
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
     let idleId: number | undefined;
     const win = window as Window & {
-      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+      requestIdleCallback?: (
+        callback: IdleRequestCallback,
+        options?: IdleRequestOptions
+      ) => number;
       cancelIdleCallback?: (handle: number) => void;
     };
 
     const mountCharacter = () => setShouldRenderCharacter(true);
 
+    // Mount sooner on smaller screens so the 3D face appears with the hero.
+    const delay = window.innerWidth <= 1024 ? 200 : 1200;
+
     if (typeof win.requestIdleCallback === "function") {
-      idleId = win.requestIdleCallback(mountCharacter, { timeout: 1500 });
+      idleId = win.requestIdleCallback(mountCharacter, { timeout: delay });
     } else {
-      timeoutId = setTimeout(mountCharacter, 1200);
+      timeoutId = setTimeout(mountCharacter, delay);
     }
 
     return () => {
@@ -64,9 +63,8 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
-      {isDesktopView && !isMobile && shouldRenderCharacter && children}
       <div className="container-main">
-        <Landing />
+        <Landing>{shouldRenderCharacter ? children : null}</Landing>
         <About />
         <WhatIDo />
         <Career />
