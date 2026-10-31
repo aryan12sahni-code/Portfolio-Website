@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { About } from "./about";
 import { Contact } from "./contact";
 import { Education } from "./education";
@@ -14,11 +14,30 @@ import { Skills } from "./skills";
 
 export function PortfolioShell() {
   const [ready, setReady] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
   const onComplete = useCallback(() => setReady(true), []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("skip") === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShowLoader(false);
+      setReady(true);
+    }
+  }, []);
+
+  // Safety net so the site never stays blocked behind the boot screen.
+  useEffect(() => {
+    if (!showLoader || ready) return;
+    const failsafe = window.setTimeout(() => {
+      setShowLoader(false);
+      setReady(true);
+    }, 4000);
+    return () => window.clearTimeout(failsafe);
+  }, [showLoader, ready]);
 
   return (
     <>
-      {!ready && <IntroLoader onComplete={onComplete} />}
+      {showLoader && !ready && <IntroLoader onComplete={onComplete} />}
       <div
         className={
           ready

@@ -12,26 +12,20 @@ export function IntroLoader({ onComplete }: IntroLoaderProps) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const start = performance.now();
-    const duration = 1600;
-    let frame = 0;
-
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setProgress(Math.round(eased * 100));
-      if (t < 1) {
-        frame = requestAnimationFrame(tick);
-      } else {
-        setTimeout(() => {
+    let value = 0;
+    const timer = window.setInterval(() => {
+      value = Math.min(100, value + 5);
+      setProgress(value);
+      if (value >= 100) {
+        window.clearInterval(timer);
+        window.setTimeout(() => {
           setVisible(false);
-          setTimeout(onComplete, 450);
-        }, 180);
+          window.setTimeout(onComplete, 420);
+        }, 160);
       }
-    };
+    }, 45);
 
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    return () => window.clearInterval(timer);
   }, [onComplete]);
 
   return (
@@ -55,18 +49,13 @@ export function IntroLoader({ onComplete }: IntroLoaderProps) {
           </div>
 
           <div className="mx-auto w-full max-w-4xl">
-            <motion.p
-              className="mb-6 font-[family-name:var(--font-display)] text-4xl leading-none tracking-tight sm:text-6xl md:text-7xl"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-            >
+            <p className="mb-6 font-[family-name:var(--font-display)] text-4xl leading-none tracking-tight sm:text-6xl md:text-7xl">
               Building clarity
               <span className="text-[var(--signal)]">.</span>
-            </motion.p>
+            </p>
             <div className="h-px w-full overflow-hidden bg-[var(--mist)]/15">
-              <motion.div
-                className="h-full bg-[var(--signal)]"
+              <div
+                className="h-full bg-[var(--signal)] transition-[width] duration-75 ease-linear"
                 style={{ width: `${progress}%` }}
               />
             </div>
