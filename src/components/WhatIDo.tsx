@@ -29,10 +29,7 @@ const WhatIDo = () => {
     <div className="whatIDO">
       <div className="what-box">
           <h2 className="title">
-          WORK
-          <div>
-            &nbsp;<span className="do-h2">EXPERIENCE</span>
-          </div>
+          <span className="do-h2">EXPERIENCE</span>
         </h2>
       </div>
       <div className="what-box">

@@ -85,14 +85,6 @@ const Contact = () => {
               Phone <MdArrowOutward />
             </a>
             <a
-              href="/Aryan-Sahni-Resume.pdf"
-              download
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Resume <MdArrowOutward />
-            </a>
-            <a
               href="/myworks"
               data-cursor="disable"
               className="contact-social"
