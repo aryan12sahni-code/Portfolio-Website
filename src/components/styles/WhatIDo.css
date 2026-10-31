@@ -9,7 +9,8 @@
   width: var(--cWidth);
   max-width: 1920px;
   margin: auto;
-  z-index: 9;
+  /* Keep below the fixed 3D character so cards don't cover the avatar */
+  z-index: 2;
 }
 
 .what-box {
@@ -17,7 +18,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 9;
+  z-index: 2;
 }
 
 .what-box h2 {

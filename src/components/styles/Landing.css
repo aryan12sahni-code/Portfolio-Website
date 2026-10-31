@@ -483,8 +483,13 @@ h2.landing-info-h2 {
   .character-model {
     height: 100vh;
     bottom: 0;
-    z-index: 11;
+    z-index: 20;
     position: fixed;
+    pointer-events: none;
+  }
+
+  .character-model canvas {
+    z-index: 21;
   }
 
   .character-model::after,
