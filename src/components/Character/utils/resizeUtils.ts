@@ -18,8 +18,8 @@ export default function handleResize(
   const isMobileHero = window.innerWidth <= 1024;
   if (isMobileHero) {
     camera.fov = 18;
-    camera.position.set(0, 14.2, 20.5);
-    camera.zoom = 1.55;
+    camera.position.set(0, 14.35, 18.5);
+    camera.zoom = 1.85;
   } else {
     camera.fov = 14.8;
     camera.position.set(-0.35, 13.0, 24.5);

@@ -69,7 +69,7 @@
     width: 100%;
     position: relative;
     z-index: 1;
-    margin: -12px 0 -28px;
+    margin: -4px 0 -20px;
   }
 
   .character-model {
@@ -78,17 +78,17 @@
     left: auto !important;
     bottom: auto !important;
     transform: none !important;
-    width: min(92vw, 360px) !important;
-    height: min(42vh, 320px) !important;
-    max-height: 320px;
+    width: min(100vw, 480px) !important;
+    height: min(52vh, 420px) !important;
+    max-height: 420px;
     margin: 0 auto;
     z-index: 1;
     overflow: hidden;
   }
 
   .character-hover {
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: 220px;
   }
 
   .character-model::after,
@@ -174,13 +174,13 @@
   }
 
   .character-container {
-    margin: -8px 0 -24px;
+    margin: -4px 0 -16px;
   }
 
   .character-model {
-    width: min(88vw, 300px) !important;
-    height: min(36vh, 260px) !important;
-    max-height: 260px;
+    width: min(100vw, 420px) !important;
+    height: min(48vh, 380px) !important;
+    max-height: 380px;
   }
 }
 
