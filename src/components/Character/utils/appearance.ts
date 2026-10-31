@@ -124,31 +124,24 @@ function attachRobotHead(root: THREE.Object3D) {
     root.getObjectByName("spine005");
   if (!headBone) return;
 
-  // Size against the torso so the head reads at human proportions (~1/3 shoulder width).
-  const body =
-    root.getObjectByName("BODYSHIRT") ||
-    root.getObjectByName("BODY.SHIRT") ||
-    root.getObjectByName("bodyshirt");
+  // Match the original face mesh size so the robot head sits at a natural scale.
   const stockFace =
     root.getObjectByName("Plane007") || root.getObjectByName("Plane.007");
-
-  let scale = 2.4;
-  if (body) {
-    const box = new THREE.Box3().setFromObject(body);
-    const size = new THREE.Vector3();
-    box.getSize(size);
-    // Local unit head is ~1.55 wide; target ~38% of shoulder span.
-    scale = (size.x * 0.38) / 1.55;
-  } else if (stockFace) {
+  // Unit robot cranium is ~1.75 wide — map that to the stock face width.
+  const UNIT_HEAD_WIDTH = 1.75;
+  let scale = 0.85;
+  if (stockFace) {
     const was = stockFace.visible;
     stockFace.visible = true;
     const box = new THREE.Box3().setFromObject(stockFace);
     const size = new THREE.Vector3();
     box.getSize(size);
     stockFace.visible = was;
-    scale = Math.max(size.x, size.y) * 1.35;
+    const faceWidth = Math.max(size.x, size.z);
+    // Slightly larger than the old clay face (+12%) so LEDs read clearly.
+    scale = (faceWidth * 1.12) / UNIT_HEAD_WIDTH;
   }
-  scale = Math.min(Math.max(scale, 1.8), 8);
+  scale = Math.min(Math.max(scale, 0.55), 2.2);
 
   const head = new THREE.Group();
   head.name = "robotHead";
@@ -242,8 +235,7 @@ function attachRobotHead(root: THREE.Object3D) {
   head.add(collar);
 
   head.scale.setScalar(scale);
-  // Lift slightly so the oversized head sits cleanly above the shoulders.
-  head.position.set(0, 0.12, 0.08);
+  head.position.set(0, 0.06, 0.06);
   head.rotation.set(-0.05, 0, 0);
 
   headBone.add(head);
@@ -293,15 +285,15 @@ function attachRobotHandGuards(root: THREE.Object3D) {
     guard.add(led);
 
     const handMesh = root.getObjectByName("Hand");
-    let s = 1.1;
+    let s = 0.55;
     if (handMesh) {
       const box = new THREE.Box3().setFromObject(handMesh);
       const size = new THREE.Vector3();
       box.getSize(size);
-      s = Math.min(Math.max(Math.max(size.x, size.z) * 0.85, 0.6), 3.5);
+      s = Math.min(Math.max(Math.max(size.x, size.z) * 0.45, 0.35), 1.4);
     }
     guard.scale.setScalar(s);
-    guard.position.set(0, 0.02, 0.05);
+    guard.position.set(0, 0.02, 0.04);
 
     bone.add(guard);
   }
