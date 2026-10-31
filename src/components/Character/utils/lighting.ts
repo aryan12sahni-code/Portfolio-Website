@@ -3,10 +3,10 @@ import { RGBELoader } from "three-stdlib";
 import { gsap } from "gsap";
 
 const setLighting = (scene: THREE.Scene) => {
-  // Soft warm key so the portrait skin reads naturally.
-  const directionalLight = new THREE.DirectionalLight(0xffe2c8, 0);
+  // Cool key for metal / robot materials.
+  const directionalLight = new THREE.DirectionalLight(0xd7f8f3, 0);
   directionalLight.intensity = 0;
-  directionalLight.position.set(0.4, 0.1, -1);
+  directionalLight.position.set(0.45, 0.05, -1);
   directionalLight.castShadow = true;
   directionalLight.shadow.mapSize.width = 1024;
   directionalLight.shadow.mapSize.height = 1024;
