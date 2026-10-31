@@ -6,13 +6,13 @@
   .landing-section,
   .landing-container {
     height: auto !important;
-    min-height: 100svh;
+    min-height: 0 !important;
     max-width: 100%;
     width: 100% !important;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: 72px 0 40px;
+    padding: 72px 0 12px;
   }
 
   .landing-container {
@@ -170,7 +170,7 @@
   .landing-section,
   .landing-container {
     padding-top: 64px;
-    padding-bottom: 24px;
+    padding-bottom: 8px;
   }
 
   .character-container {
