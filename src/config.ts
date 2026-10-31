@@ -14,7 +14,7 @@ export const config = {
   about: {
     title: "About Me",
     description:
-      "I build the operational backbone behind product decisions — cleaning activity data, surfacing retention signals, and making weekly health reports run themselves. With experience at DotPe and BusyBots, I connect SQL, dashboards, and automation so feature adoption climbs and reporting noise disappears. Now based in Germany and starting an M.Sc. in Artificial Intelligence for Industrial Applications at OTH Amberg-Weiden, I'm focused on bringing that same product rigor into ML systems for real-world operations.",
+      "I’m Aryan, a data and product professional based in Nuremberg, currently pursuing an M.Sc. in Artificial Intelligence for Industrial Applications at OTH Amberg-Weiden.\n\nAt DotPe, I spent over a year in Product Operations, using SQL, Python, and BI dashboards to turn user data into product decisions. This lifted feature usage by 15%, saved 8 hours of reporting a week, and cut post-release complaints by 20%. Earlier, as an RPA intern at BusyBots, I automated workflows with PowerApps and Dataverse, reducing manual processing time by 40%.\n\nOutside of work, I build projects that combine web development and data analysis. I enjoy creating practical tools and digging into real-world data to find patterns and solve everyday problems.",
   },
   experiences: [
     {
