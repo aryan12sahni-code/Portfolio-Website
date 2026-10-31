@@ -209,33 +209,48 @@
 }
 
 @media screen and (max-width: 600px) {
+  .techstack-new {
+    min-height: auto;
+    padding: 56px 0;
+  }
+
+  .techstack-content {
+    padding: 0 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .techstack-content h2 {
-    font-size: 36px;
+    font-size: clamp(28px, 9vw, 36px);
+    margin-bottom: 28px;
   }
   
   .techstack-pyramid {
-    gap: 6px;
+    gap: 8px;
+    min-width: min(100%, 360px);
   }
   
   .techstack-row {
     gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .techstack-item {
-    width: 40px;
-    height: 50px;
-    padding: 5px;
+    width: 48px;
+    height: 58px;
+    padding: 6px;
     border-radius: 8px;
   }
   
   .techstack-item img {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
   
   .techstack-item span {
-    font-size: 6px;
-    max-width: 38px;
+    font-size: 7px;
+    max-width: 44px;
     margin-top: 3px;
   }
 }

@@ -121,19 +121,37 @@ a.contact-social {
 @media only screen and (max-width: 900px) {
   .contact-flex {
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
   }
   .contact-flex p {
     margin-bottom: 0px;
+    word-break: break-word;
   }
   .contact-flex h4 {
-    margin-top: 20px;
+    margin-top: 16px;
   }
   .contact-section {
-    margin-top: 50px;
-    padding-bottom: 50px;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    min-height: auto;
+  }
+  .contact-section h3 {
+    font-size: clamp(28px, 8vw, 40px);
+    margin-bottom: 20px;
   }
   .contact-container {
-    width: calc(100% - 25px);
+    width: 100%;
+    max-width: var(--cWidth);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .contact-section {
+    margin-top: 24px;
+    padding-bottom: 80px;
+  }
+
+  a.contact-social {
+    font-size: 15px;
   }
 }
