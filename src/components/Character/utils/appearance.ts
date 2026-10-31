@@ -124,18 +124,31 @@ function attachRobotHead(root: THREE.Object3D) {
     root.getObjectByName("spine005");
   if (!headBone) return;
 
+  // Size against the torso so the head reads at human proportions (~1/3 shoulder width).
+  const body =
+    root.getObjectByName("BODYSHIRT") ||
+    root.getObjectByName("BODY.SHIRT") ||
+    root.getObjectByName("bodyshirt");
   const stockFace =
     root.getObjectByName("Plane007") || root.getObjectByName("Plane.007");
-  let scale = 0.28;
-  if (stockFace) {
+
+  let scale = 2.4;
+  if (body) {
+    const box = new THREE.Box3().setFromObject(body);
+    const size = new THREE.Vector3();
+    box.getSize(size);
+    // Local unit head is ~1.55 wide; target ~38% of shoulder span.
+    scale = (size.x * 0.38) / 1.55;
+  } else if (stockFace) {
     const was = stockFace.visible;
     stockFace.visible = true;
     const box = new THREE.Box3().setFromObject(stockFace);
     const size = new THREE.Vector3();
     box.getSize(size);
     stockFace.visible = was;
-    scale = Math.min(Math.max(Math.max(size.x, size.y) * 0.4, 0.14), 1.5);
+    scale = Math.max(size.x, size.y) * 1.35;
   }
+  scale = Math.min(Math.max(scale, 1.8), 8);
 
   const head = new THREE.Group();
   head.name = "robotHead";
@@ -146,98 +159,92 @@ function attachRobotHead(root: THREE.Object3D) {
     roughness: 0.2,
     metalness: 0.4,
     emissive: ACCENT,
-    emissiveIntensity: 1.2,
+    emissiveIntensity: 1.4,
   });
   const glowWarm = metalMat(ACCENT_WARM, {
     roughness: 0.25,
     metalness: 0.35,
     emissive: ACCENT_WARM,
-    emissiveIntensity: 0.9,
+    emissiveIntensity: 1.1,
   });
 
-  // Main cranial shell
+  // Main cranial shell — larger, rounder presence
   const cranium = new THREE.Mesh(
-    new THREE.BoxGeometry(1.55, 1.45, 1.35),
+    new THREE.BoxGeometry(1.75, 1.55, 1.5),
     chassis
   );
-  cranium.position.set(0, 0.1, 0.05);
+  cranium.position.set(0, 0.15, 0.08);
   head.add(cranium);
 
-  // Rounded dome top
-  const dome = new THREE.Mesh(new THREE.SphereGeometry(0.78, 24, 16), chassis);
-  dome.scale.set(1.05, 0.7, 0.95);
-  dome.position.set(0, 0.72, 0);
+  const dome = new THREE.Mesh(new THREE.SphereGeometry(0.9, 28, 18), chassis);
+  dome.scale.set(1.08, 0.75, 1);
+  dome.position.set(0, 0.82, 0.02);
   head.add(dome);
 
-  // Jaw plate
-  const jaw = new THREE.Mesh(new THREE.BoxGeometry(1.25, 0.45, 0.9), dark);
-  jaw.position.set(0, -0.55, 0.15);
+  const jaw = new THREE.Mesh(new THREE.BoxGeometry(1.45, 0.5, 1), dark);
+  jaw.position.set(0, -0.55, 0.18);
   head.add(jaw);
 
-  // Visor / eye bar
-  const visor = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.32, 0.18), dark);
-  visor.position.set(0, 0.22, 0.7);
+  const visor = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.4, 0.22), dark);
+  visor.position.set(0, 0.25, 0.78);
   head.add(visor);
 
   for (const side of [-1, 1]) {
-    const eye = new THREE.Mesh(new THREE.CircleGeometry(0.14, 20), glow);
-    eye.position.set(side * 0.28, 0.22, 0.8);
+    const eye = new THREE.Mesh(new THREE.CircleGeometry(0.2, 24), glow);
+    eye.position.set(side * 0.34, 0.25, 0.9);
     head.add(eye);
 
     const pupil = new THREE.Mesh(
-      new THREE.CircleGeometry(0.06, 12),
+      new THREE.CircleGeometry(0.08, 14),
       new THREE.MeshStandardMaterial({
         color: "#04120f",
         emissive: ACCENT,
-        emissiveIntensity: 0.4,
+        emissiveIntensity: 0.55,
       })
     );
-    pupil.position.set(side * 0.28, 0.22, 0.81);
+    pupil.position.set(side * 0.34, 0.25, 0.91);
     head.add(pupil);
   }
 
-  // Antenna
   const antenna = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.04, 0.05, 0.55, 10),
+    new THREE.CylinderGeometry(0.05, 0.06, 0.7, 10),
     dark
   );
-  antenna.position.set(0.35, 1.15, -0.1);
+  antenna.position.set(0.42, 1.3, -0.08);
   head.add(antenna);
-  const tip = new THREE.Mesh(new THREE.SphereGeometry(0.1, 12, 12), glowWarm);
-  tip.position.set(0.35, 1.45, -0.1);
+  const tip = new THREE.Mesh(new THREE.SphereGeometry(0.14, 14, 14), glowWarm);
+  tip.position.set(0.42, 1.7, -0.08);
   head.add(tip);
 
-  // Side vents
   for (const side of [-1, 1]) {
-    const vent = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.55, 0.35), dark);
-    vent.position.set(side * 0.82, 0.05, 0.05);
+    const vent = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.65, 0.4), dark);
+    vent.position.set(side * 0.92, 0.08, 0.05);
     head.add(vent);
     for (let i = 0; i < 3; i++) {
       const slit = new THREE.Mesh(
-        new THREE.BoxGeometry(0.04, 0.06, 0.28),
+        new THREE.BoxGeometry(0.05, 0.08, 0.32),
         glow
       );
-      slit.position.set(side * 0.88, -0.1 + i * 0.14, 0.05);
+      slit.position.set(side * 0.98, -0.08 + i * 0.16, 0.05);
       head.add(slit);
     }
   }
 
-  // Chin LED strip
-  const chinLed = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.06, 0.08), glow);
-  chinLed.position.set(0, -0.55, 0.62);
+  const chinLed = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.08, 0.1), glow);
+  chinLed.position.set(0, -0.52, 0.7);
   head.add(chinLed);
 
-  // Neck collar ring
   const collar = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.45, 0.55, 0.28, 20),
+    new THREE.CylinderGeometry(0.55, 0.7, 0.35, 22),
     dark
   );
-  collar.position.set(0, -0.95, 0.05);
+  collar.position.set(0, -1.05, 0.05);
   head.add(collar);
 
   head.scale.setScalar(scale);
-  head.position.set(0, 0.04, 0.05);
-  head.rotation.set(-0.06, 0, 0);
+  // Lift slightly so the oversized head sits cleanly above the shoulders.
+  head.position.set(0, 0.12, 0.08);
+  head.rotation.set(-0.05, 0, 0);
 
   headBone.add(head);
 }
@@ -285,17 +292,16 @@ function attachRobotHandGuards(root: THREE.Object3D) {
     led.position.set(0, 0.16, 0.1);
     guard.add(led);
 
-    // Scale relative to hand size when possible.
     const handMesh = root.getObjectByName("Hand");
-    let s = 0.35;
+    let s = 1.1;
     if (handMesh) {
       const box = new THREE.Box3().setFromObject(handMesh);
       const size = new THREE.Vector3();
       box.getSize(size);
-      s = Math.min(Math.max(Math.max(size.x, size.z) * 0.35, 0.12), 1.2);
+      s = Math.min(Math.max(Math.max(size.x, size.z) * 0.85, 0.6), 3.5);
     }
     guard.scale.setScalar(s);
-    guard.position.set(0, 0, 0);
+    guard.position.set(0, 0.02, 0.05);
 
     bone.add(guard);
   }
