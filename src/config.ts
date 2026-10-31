@@ -107,12 +107,13 @@ export const config = {
     },
     {
       id: 4,
-      title: "Cross-Department Workflow Automation",
-      category: "RPA / Operations",
-      technologies: "PowerApps, Dataverse, Role-Based Access",
-      image: "/images/project-rpa.svg",
+      title: "LightUp — AI Vision Assistant",
+      category: "Assistive Intelligence · OTH Amberg-Weiden",
+      technologies:
+        "Python, FastAPI, NiceGUI, YOLOv8, Florence-2, OpenCV, dlib, TTS",
+      image: "/images/project-lightup.svg",
       description:
-        "Automated repetitive cross-departmental data workflows at BusyBots with PowerApps and Dataverse, cutting manual processing time by 40% and eliminating data-entry errors. Designed role-based Dataverse access for multiple personas to protect security and integrity across automated flows.",
+        "Built a real-time AI assistant for visually impaired users that reads a live camera feed and speaks results aloud — object detection (YOLOv8n), face recognition with voice enrollment (OpenCV + dlib), and scene description (Florence-2). Unified FastAPI + NiceGUI stack on edge hardware with motion gating and audio cooldowns (~452 ms/frame), plus a physics-based power/battery telemetry dashboard.",
       link: "/myworks",
     },
   ],
