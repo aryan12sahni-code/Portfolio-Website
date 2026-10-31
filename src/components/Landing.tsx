@@ -30,7 +30,7 @@ const Landing = ({ children }: PropsWithChildren) => {
             </h2>
             <h2>
               <div className="landing-h2-info">
-                Product ops · Industrial AI
+                Industrial AI · Nürnberg
               </div>
             </h2>
           </div>

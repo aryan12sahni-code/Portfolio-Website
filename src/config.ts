@@ -18,19 +18,18 @@ export const config = {
   },
   experiences: [
     {
-      position: "Product Operations",
-      company: "DotPe",
-      period: "2024 - 2025",
-      location: "New Delhi, India",
+      position: "Bachelor of Computer Application",
+      company: "Bharati Vidyapeeth University",
+      period: "2021 - 2024",
+      location: "Delhi, India",
       description:
-        "Drove feature adoption with SQL/Python analysis (+15% usage), automated Tableau & Power BI health reporting (8h/week saved), cut user complaints 20% via NPS friction mapping, and reduced issue resolve time 30% through Jira/Confluence workflow redesign.",
+        "Built a foundation in computer science, web development, and data structures while shipping personal full-stack and analytics projects.",
       responsibilities: [
-        "Analyzed user adoption, UX, and retention with SQL and Python",
-        "Automated weekly product-health dashboards in Tableau and Power BI",
-        "Mapped UX friction through NPS and support tickets with PMs",
-        "Optimized cross-discipline ticket intake in Jira and Confluence",
+        "Computer application fundamentals",
+        "Web development and data structures",
+        "Personal product and analytics projects",
       ],
-      technologies: ["SQL", "Python", "Tableau", "Power BI", "Jira", "Confluence"],
+      technologies: ["Java", "JavaScript", "Python", "SQL", "React"],
     },
     {
       position: "RPA Intern",
@@ -47,18 +46,19 @@ export const config = {
       technologies: ["PowerApps", "Dataverse", "Automation"],
     },
     {
-      position: "Bachelor of Computer Application",
-      company: "Bharati Vidyapeeth University",
-      period: "2021 - 2024",
-      location: "Delhi, India",
+      position: "Product Operations",
+      company: "DotPe",
+      period: "2024 - 2025",
+      location: "New Delhi, India",
       description:
-        "Built a foundation in computer science, web development, and data structures while shipping personal full-stack and analytics projects.",
+        "Drove feature adoption with SQL/Python analysis (+15% usage), automated Tableau & Power BI health reporting (8h/week saved), cut user complaints 20% via NPS friction mapping, and reduced issue resolve time 30% through Jira/Confluence workflow redesign.",
       responsibilities: [
-        "Computer application fundamentals",
-        "Web development and data structures",
-        "Personal product and analytics projects",
+        "Analyzed user adoption, UX, and retention with SQL and Python",
+        "Automated weekly product-health dashboards in Tableau and Power BI",
+        "Mapped UX friction through NPS and support tickets with PMs",
+        "Optimized cross-discipline ticket intake in Jira and Confluence",
       ],
-      technologies: ["Java", "JavaScript", "Python", "SQL", "React"],
+      technologies: ["SQL", "Python", "Tableau", "Power BI", "Jira", "Confluence"],
     },
     {
       position: "M.Sc. Artificial Intelligence",
