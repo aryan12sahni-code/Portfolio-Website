@@ -1,13 +1,16 @@
 # Aryan Sahni — Portfolio
 
-Original industrial-editorial portfolio for **Aryan Sahni** (Nürnberg) — product operations, RPA, and industrial AI.
+Portfolio for **Aryan Sahni** — product operations & industrial AI.
 
-This is **not** a clone of the common Three.js sit-character template. The experience is a custom scroll narrative with:
+Built with React, Three.js, and GSAP. Visual identity uses teal/amber accents on a deep navy background (Syne + DM Sans), with custom avatar materials and copy.
 
-- Full-bleed photographic hero and oversized brand typography
-- Light/dark theme toggle
-- Editorial about, experience rails, signal timeline, project chapters, and contact panel
-- GSAP scroll reveals + Lenis smooth scrolling
+## Features
+
+- Mouse-driven 3D character with custom face/hair materials
+- GSAP + Lenis smooth scroll
+- Dark theme only (teal/amber accents)
+- Project gallery with full descriptions, `/myworks` page
+- Contact CTAs
 
 ## Run locally
 
@@ -20,8 +23,4 @@ Open [http://127.0.0.1:43123](http://127.0.0.1:43123).
 
 ## Content
 
-Edit `src/config.ts` for bio, experience, projects, skills, and contact.
-
-## Stack
-
-React 18 · Vite · TypeScript · GSAP · Lenis
+Edit `src/config.ts` for copy, experience, projects, and contact details.
