@@ -1,34 +1,18 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import HomePage from "./site/HomePage";
 
-const CharacterModel = lazy(() => import("./components/Character"));
-const MainContainer = lazy(() => import("./components/MainContainer"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
-import { LoadingProvider } from "./context/LoadingProvider";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <LoadingProvider>
-              <Suspense>
-                <MainContainer>
-                  <Suspense>
-                    <CharacterModel />
-                  </Suspense>
-                </MainContainer>
-              </Suspense>
-            </LoadingProvider>
-          }
-        />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/myworks"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div style={{ padding: 24 }}>Loading…</div>}>
               <MyWorks />
             </Suspense>
           }
